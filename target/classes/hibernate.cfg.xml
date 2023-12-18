@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">
+            com.microsoft.sqlserver.jdbc.SQLServerDriver
+        </property>
+        <property name="hibernate.connection.url">
+            jdbc:sqlserver://localhost:1433;databaseName=FINALASS_FPOLYSHOP_FA22_SOF205__SOF2041;encrypt=false
+        </property>
+        <property name="hibernate.connection.username">
+            sa
+        </property>
+        <property name="hibernate.connection.password">
+            123456
+        </property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">100</property>
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.SQLServerDialect
+        </property>
+        <!-- Show all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+        <!-- List mapping annotation classes -->
+        <mapping class="com.example.springboot.model.ChucVu" />
+        <mapping class="com.example.springboot.model.CuaHang" />
+        <mapping class="com.example.springboot.model.DongSP" />
+        <mapping class="com.example.springboot.model.KhachHang" />
+        <mapping class="com.example.springboot.model.MauSac" />
+        <mapping class="com.example.springboot.model.NhanVien" />
+        <mapping class="com.example.springboot.model.NSX" />
+        <mapping class="com.example.springboot.model.SanPham" />
+        <mapping class="com.example.springboot.model.ChiTietSP" />
+        <mapping class="com.example.springboot.model.HoaDon" />
+        <mapping class="com.example.springboot.model.HoaDonChiTiet" />
+    </session-factory>
+</hibernate-configuration>
