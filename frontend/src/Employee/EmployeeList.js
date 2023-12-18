@@ -117,7 +117,7 @@ class EmployeeList extends Component {
                                 </Label>
                                 <Input
                                     id="exampleMaNV"
-                                    name="maNV"
+                                    name="ma"
                                     placeholder="Mã NV"
                                     type="text"
                                     value={item.ma}
