@@ -1,15 +1,52 @@
 import React, {Component} from 'react';
-import {Button, ButtonGroup, Col, Container, Input, Label, Row, Table} from 'reactstrap';
+import {Button, ButtonGroup, Col, Container, Form, FormGroup, Input, Label, Row, Table} from 'reactstrap';
 import AppNavbar from '../AppNavbar';
 import AppFooter from '../AppFooter';
 import {Link} from 'react-router-dom';
 
 class EmployeeList extends Component {
-
+    emptyItem = {
+        ma: '',
+        ten: '',
+        tenDem: '',
+        ho: '',
+        gioiTinh: '',
+        ngaySinh: '',
+        diaChi: '',
+        sdt: '',
+        trangThai: '',
+    };
     constructor(props) {
         super(props);
-        this.state = {employee: []};
+        this.state = {employee: [], item: this.emptyItem};
         this.remove = this.remove.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleChange(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        let item = {...this.state.item};
+        item[name] = value;
+        this.setState({item});
+        console.log("name handlechange:"+name);
+        console.log("value handlechange:"+value);
+    }
+
+    async handleSubmit(event) {
+        event.preventDefault();
+        const {item} = this.state;
+
+        await fetch('/employee/add', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item),
+        });
+        this.props.history.push('/employee');
     }
 
     componentDidMount() {
@@ -19,7 +56,6 @@ class EmployeeList extends Component {
                 accept: 'application/json'
             }
         };
-        console.log(requestOptions);
         try {
             fetch('http://localhost:8080/employee/getAll', requestOptions)
                 .then(response => response.json())
@@ -28,13 +64,15 @@ class EmployeeList extends Component {
             console.log(err.toString())
         }
     }
-
     async remove(id) {
+        const {item} = this.state;
+        console.log("click delete!");
         await fetch(`/employee/${id}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                body: JSON.stringify(item),
             }
         }).then(() => {
             let updatedEmployee = [...this.state.employee].filter(i => i.id !== id);
@@ -44,6 +82,7 @@ class EmployeeList extends Component {
 
     render() {
         const {employee} = this.state;
+        const {item} = this.state;
         const employeeList = employee.map(employee => {
             return <tr key={employee.idNhanVien}>
                 <td>1</td>
@@ -57,7 +96,7 @@ class EmployeeList extends Component {
                 <td>
                     <ButtonGroup>
                         <Button size="sm" color="primary" tag={Link}
-                                to={"/employee/" + employee.idNhanVien}>Edit</Button>
+                                to={"/employee/" + employee.idNhanVien}>Detail</Button>
                         <Button size="sm" color="danger"
                                 onClick={() => this.remove(employee.idNhanVien)}>Delete</Button>
                     </ButtonGroup>
@@ -70,121 +109,147 @@ class EmployeeList extends Component {
                 <AppNavbar/>
                 <Container fluid>
                     <h3>Quản lý nhân viên</h3>
-                    <div className="float-right">
+                    <Form onSubmit={this.handleSubmit}>
                         <Row xs="4">
                             <Col className="bg">
-                                <Label for="exampleEmail">
-                                    Email
+                                <Label for="exampleMaNV">
+                                    Mã NV
                                 </Label>
                                 <Input
-                                    id="exampleEmail"
-                                    name="email"
-                                    placeholder="with a placeholder"
-                                    type="email"
+                                    id="exampleMaNV"
+                                    name="maNV"
+                                    placeholder="Mã NV"
+                                    type="text"
+                                    value={item.ma}
+                                    onChange={this.handleChange}
+                                    autoComplete="ma"
                                 />
                             </Col>
+
                             <Col className="bg">
-                                <Label for="exampleEmail">
-                                    Email
+                                <Label for="exampleTen">
+                                    Tên
                                 </Label>
                                 <Input
-                                    id="exampleEmail"
-                                    name="email"
-                                    placeholder="with a placeholder"
-                                    type="email"
+                                    id="exampleTen"
+                                    name="ten"
+                                    placeholder="Tên"
+                                    type="text"
+                                    value={item.ten}
+                                    onChange={this.handleChange}
+                                    autoComplete="ten"
                                 />
                             </Col>
+
                             <Col className="bg">
-                                <Label for="exampleEmail">
-                                    Email
+                                <Label for="exampleTenDem">
+                                    Tên đệm
                                 </Label>
                                 <Input
-                                    id="exampleEmail"
-                                    name="email"
-                                    placeholder="with a placeholder"
-                                    type="email"
+                                    id="exampleTen"
+                                    name="tenDem"
+                                    placeholder="Tên đệm"
+                                    type="text"
+                                    value={item.tenDem}
+                                    onChange={this.handleChange}
+                                    autoComplete="tenDem"
                                 />
                             </Col>
+
                             <Col className="bg">
-                                <Label for="exampleEmail">
-                                    Email
+                                <Label for="exampleHo">
+                                    Họ
                                 </Label>
                                 <Input
-                                    id="exampleEmail"
-                                    name="email"
-                                    placeholder="with a placeholder"
-                                    type="email"
+                                    id="exampleHo"
+                                    name="ho"
+                                    placeholder="Họ"
+                                    type="text"
+                                    value={item.ho}
+                                    onChange={this.handleChange}
+                                    autoComplete="ho"
                                 />
                             </Col>
+
                             <Col className="bg">
                                 <Label for="exampleEmail">
-                                    Email
+                                    Giới tính
                                 </Label>
                                 <Input
-                                    id="exampleEmail"
-                                    name="email"
-                                    placeholder="with a placeholder"
-                                    type="email"
+                                    id="exampleGioiTinh"
+                                    name="gioiTinh"
+                                    placeholder="Giới tính"
+                                    type="text"
+                                    value={item.gioiTinh}
+                                    onChange={this.handleChange}
+                                    autoComplete="gioiTinh"
                                 />
                             </Col>
+
                             <Col className="bg">
-                                <Label for="exampleEmail">
-                                    Email
+                                <Label for="exampleNgaySinh">
+                                    Ngày sinh
                                 </Label>
                                 <Input
-                                    id="exampleEmail"
-                                    name="email"
-                                    placeholder="with a placeholder"
-                                    type="email"
+                                    id="exampleNgaySinh"
+                                    name="ngaySinh"
+                                    placeholder="Ngày sinh"
+                                    type="date"
+                                    value={item.ngaySinh}
+                                    onChange={this.handleChange}
+                                    autoComplete="ngaySinh"
                                 />
                             </Col>
+
                             <Col className="bg">
-                                <Label for="exampleEmail">
-                                    Email
+                                <Label for="exampleDiaChi">
+                                    Địa chỉ
                                 </Label>
                                 <Input
-                                    id="exampleEmail"
-                                    name="email"
-                                    placeholder="with a placeholder"
-                                    type="email"
+                                    id="exampleDiaChi"
+                                    name="diaChi"
+                                    placeholder="Địa chỉ"
+                                    type="text"
+                                    value={item.diaChi}
+                                    onChange={this.handleChange}
+                                    autoComplete="diaChi"
                                 />
                             </Col>
+
                             <Col className="bg">
-                                <Label for="exampleEmail">
-                                    Email
+                                <Label for="exampleSdt">
+                                    Sđt
                                 </Label>
                                 <Input
-                                    id="exampleEmail"
-                                    name="email"
-                                    placeholder="with a placeholder"
-                                    type="email"
+                                    id="exampleSdt"
+                                    name="sdt"
+                                    placeholder="Sđt"
+                                    type="text"
+                                    value={item.sdt}
+                                    onChange={this.handleChange}
+                                    autoComplete="sdt"
                                 />
                             </Col>
+
                             <Col className="bg">
-                                <Label for="exampleEmail">
-                                    Email
+                                <Label for="exampleTrangThai">
+                                    Trạng thái
                                 </Label>
                                 <Input
-                                    id="exampleEmail"
-                                    name="email"
-                                    placeholder="with a placeholder"
-                                    type="email"
-                                />
-                            </Col>
-                            <Col className="bg">
-                                <Label for="exampleEmail">
-                                    Email
-                                </Label>
-                                <Input
-                                    id="exampleEmail"
-                                    name="email"
-                                    placeholder="with a placeholder"
-                                    type="email"
+                                    id="exampleTrangThai"
+                                    name="trangThai"
+                                    placeholder="Trạng thái"
+                                    type="number"
+                                    value={item.trangThai}
+                                    onChange={this.handleChange}
+                                    autoComplete="trangThai"
                                 />
                             </Col>
                         </Row>
-                        <Button color="primary" tag={Link} to="/employee/new">Add employee</Button>
-                    </div>
+                        <FormGroup>
+                            <Button color="primary" type="submit">Add</Button>{' '}
+                        </FormGroup>
+                    </Form>
                     <Table className="mt-4">
                         <thead>
                         <tr>

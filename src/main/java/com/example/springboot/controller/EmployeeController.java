@@ -19,19 +19,22 @@ public class EmployeeController {
         return ResponseEntity.ok(lstNhanViens);
     }
     @GetMapping("/{id}")
-    public NhanVien getNhanVienByID(String id) {
+    public NhanVien getNhanVienByID(@PathVariable(value="id") String id) {
         return nhanVienService.getByIDNhanVien(id);
     }
-    @PostMapping
-    public void createClient(NhanVien nhanVien) {
+    @PostMapping("/add")
+    public ResponseEntity createNhanVien(@RequestBody NhanVien nhanVien) {
+        System.out.println(nhanVien);
         nhanVienService.saveNhanVien(nhanVien);
+        return ResponseEntity.ok(nhanVien);
     }
     @PutMapping("/{id}")
-    public void updateNhanVien(NhanVien nhanVien) {
+    public ResponseEntity updateNhanVien(@RequestBody NhanVien nhanVien) {
         nhanVienService.updateNhanVien(nhanVien);
+        return ResponseEntity.ok(nhanVien);
     }
     @DeleteMapping("/{id}")
-    public void deleteNhanVien(NhanVien nhanVien) {
+    public void deleteNhanVien(@RequestBody NhanVien nhanVien) {
         nhanVienService.deleteNhanvienByID(nhanVien);
     }
 }
