@@ -6,15 +6,15 @@ import AppNavbar from '../AppNavbar';
 class EmployeeEdit extends Component {
 
     emptyItem = {
-        maNVInp: '',
-        tenInp: '',
-        tenDemInp: '',
-        hoInp: '',
-        gioiTinhInp: '',
-        ngaySinhInp: '',
-        diaChiInp: '',
-        sdtInp: '',
-        trangThaiInp: '',
+        ma: '',
+        ten: '',
+        tenDem: '',
+        ho: '',
+        gioiTinh: '',
+        ngaySinh: '',
+        diaChi: '',
+        sdt: '',
+        trangThai: '',
     };
 
     constructor(props) {
@@ -71,12 +71,12 @@ class EmployeeEdit extends Component {
                             </Label>
                             <Input
                                 id="exampleMaNV"
-                                name="maNVInp"
+                                name="ma"
                                 placeholder="Mã NV"
                                 type="text"
                                 value={item.ma}
                                 onChange={this.handleChange}
-                                autoComplete="maNVInp"
+                                autoComplete="ma"
                             />
                         </Col>
 
@@ -86,12 +86,12 @@ class EmployeeEdit extends Component {
                             </Label>
                             <Input
                                 id="exampleTen"
-                                name="tenInp"
+                                name="ten"
                                 placeholder="Tên"
                                 type="text"
                                 value={item.ten}
                                 onChange={this.handleChange}
-                                autoComplete="tenInp"
+                                autoComplete="ten"
                             />
                         </Col>
 
@@ -100,13 +100,13 @@ class EmployeeEdit extends Component {
                                 Tên đệm
                             </Label>
                             <Input
-                                id="exampleTen"
-                                name="tenDemInp"
+                                id="exampleTenDem"
+                                name="tenDem"
                                 placeholder="Tên đệm"
                                 type="text"
                                 value={item.tenDem}
                                 onChange={this.handleChange}
-                                autoComplete="tenDemInp"
+                                autoComplete="tenDem"
                             />
                         </Col>
 
@@ -116,27 +116,27 @@ class EmployeeEdit extends Component {
                             </Label>
                             <Input
                                 id="exampleHo"
-                                name="hoInp"
+                                name="ho"
                                 placeholder="Họ"
                                 type="text"
                                 value={item.ho}
                                 onChange={this.handleChange}
-                                autoComplete="hoInp"
+                                autoComplete="ho"
                             />
                         </Col>
 
                         <Col className="bg">
-                            <Label for="exampleEmail">
+                            <Label for="exampleGioiTinh">
                                 Giới tính
                             </Label>
                             <Input
                                 id="exampleGioiTinh"
-                                name="gioiTinhInp"
+                                name="gioiTinh"
                                 placeholder="Giới tính"
                                 type="text"
                                 value={item.gioiTinh}
                                 onChange={this.handleChange}
-                                autoComplete="gioiTinhInp"
+                                autoComplete="gioiTinh"
                             />
                         </Col>
 
@@ -146,12 +146,12 @@ class EmployeeEdit extends Component {
                             </Label>
                             <Input
                                 id="exampleNgaySinh"
-                                name="ngaySinhInp"
+                                name="ngaySinh"
                                 placeholder="Ngày sinh"
                                 type="date"
                                 value={item.ngaySinh}
                                 onChange={this.handleChange}
-                                autoComplete="ngaySinhInp"
+                                autoComplete="ngaySinh"
                             />
                         </Col>
 
@@ -166,7 +166,7 @@ class EmployeeEdit extends Component {
                                 type="text"
                                 value={item.diaChi}
                                 onChange={this.handleChange}
-                                autoComplete="diaChiInp"
+                                autoComplete="diaChi"
                             />
                         </Col>
 
@@ -176,12 +176,12 @@ class EmployeeEdit extends Component {
                             </Label>
                             <Input
                                 id="exampleSdt"
-                                name="sdtInp"
+                                name="sdt"
                                 placeholder="Sđt"
                                 type="text"
                                 value={item.sdt}
                                 onChange={this.handleChange}
-                                autoComplete="sdtInp"
+                                autoComplete="sdt"
                             />
                         </Col>
 
@@ -191,12 +191,12 @@ class EmployeeEdit extends Component {
                             </Label>
                             <Input
                                 id="exampleTrangThai"
-                                name="trangThaiInp"
+                                name="trangThai"
                                 placeholder="Trạng thái"
                                 type="number"
                                 value={item.trangThai}
                                 onChange={this.handleChange}
-                                autoComplete="trangThaiInp"
+                                autoComplete="trangThai"
                             />
                         </Col>
                     </Row>

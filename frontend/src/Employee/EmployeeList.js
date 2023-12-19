@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect} from 'react';
 import {Button, ButtonGroup, Col, Container, Form, FormGroup, Input, Label, Row, Table} from 'reactstrap';
 import AppNavbar from '../AppNavbar';
 import AppFooter from '../AppFooter';
@@ -16,6 +16,21 @@ class EmployeeList extends Component {
         sdt: '',
         trangThai: '',
     };
+    getAll(){
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json'
+            }
+        };
+        try {
+            fetch('http://localhost:8080/employee/getAll', requestOptions)
+                .then(response => response.json())
+                .then(data => this.setState({employee: data}));
+        } catch (err) {
+            console.log(err.toString())
+        }
+    }
     constructor(props) {
         super(props);
         this.state = {employee: [], item: this.emptyItem};
@@ -46,7 +61,7 @@ class EmployeeList extends Component {
             },
             body: JSON.stringify(item),
         });
-        this.props.history.push('/employee');
+        this.setState(this.getAll());
     }
 
     componentDidMount() {
@@ -65,19 +80,25 @@ class EmployeeList extends Component {
         }
     }
     async remove(id) {
-        const {item} = this.state;
+        let {item} = this.state;
+        const {employee} = this.state;
+        for (let i = 0; i < employee.length; i++) {
+            if(employee[i].idNhanVien===id){
+                item= employee[i];
+            }
+        }
+        console.log(item);
         console.log("click delete!");
+        console.log(`/employee/${id}`);
         await fetch(`/employee/${id}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                body: JSON.stringify(item),
-            }
-        }).then(() => {
-            let updatedEmployee = [...this.state.employee].filter(i => i.id !== id);
-            this.setState({employee: updatedEmployee});
-        });
+            },
+            body: JSON.stringify(item),
+        })
+        this.setState(this.getAll());
     }
 
     render() {
