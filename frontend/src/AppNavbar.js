@@ -28,8 +28,8 @@ function AppNavbar(args) {
                             </DropdownToggle>
                             <DropdownMenu right>
                                 <DropdownItem  href="http://localhost:3000/employee">Nhân viên</DropdownItem>
-                                <DropdownItem  href="https://github.com/reactstrap/reactstrap">Option 2</DropdownItem>
-                                <DropdownItem  href="https://github.com/reactstrap/reactstrap">Option 3</DropdownItem>
+                                <DropdownItem  href="http://localhost:3000/chucVu">Chức vụ</DropdownItem>
+                                <DropdownItem  href="http://localhost:3000/cuaHang">Cửa hàng</DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
                         <UncontrolledDropdown nav inNavbar>

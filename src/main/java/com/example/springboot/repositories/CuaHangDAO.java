@@ -78,7 +78,25 @@ public class CuaHangDAO {
             Session session = factory.openSession();
             tx = session.beginTransaction();
             session.delete(cuaHang);
+            tx.commit();
             System.out.println("Delete sucess!");
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateCuaHang(CuaHang cuaHang) {
+        org.hibernate.cfg.Configuration cfg = new org.hibernate.cfg.Configuration();
+        cfg.configure("hibernate.cfg.xml");
+        SessionFactory factory =cfg.buildSessionFactory();
+        Transaction tx = null;
+        try {
+            Session session = factory.openSession();
+            tx = session.beginTransaction();
+            session.saveOrUpdate(cuaHang);
+            tx.commit();
+            System.out.println("Update sucess!");
         }
         catch(Exception e) {
             e.printStackTrace();

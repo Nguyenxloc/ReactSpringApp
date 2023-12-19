@@ -67,4 +67,16 @@ public class NhanVienService {
     public void updateNhanVien(NhanVien nhanVien) {
          nhanVienDAO.update(nhanVien);
     }
+
+    public void updateChucVu(ChucVu chucVu) {
+         nhanVienDAO.updateChucVu(chucVu);
+    }
+
+    public void deleteChucVuByID(ChucVu chucVu) {
+         chucVuDAO.deleteChucVu(chucVu);
+    }
+
+    public void updateCuaHang(CuaHang cuaHang) {
+         cuaHangDAO.updateCuaHang(cuaHang);
+    }
 }

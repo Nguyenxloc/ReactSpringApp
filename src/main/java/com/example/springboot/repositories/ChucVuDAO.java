@@ -74,6 +74,7 @@ public class ChucVuDAO {
             tx = session.beginTransaction();
             session.delete(chucVu);
             tx.commit();
+            System.out.println("delete success");
         }
         catch(Exception e) {
             e.printStackTrace();

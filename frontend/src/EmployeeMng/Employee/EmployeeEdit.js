@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import {Button, Col, Container, Form, FormGroup, Input, Label, Row} from 'reactstrap';
-import AppNavbar from '../AppNavbar';
+import AppNavbar from '../../AppNavbar';
 
 class EmployeeEdit extends Component {
 
@@ -16,6 +16,22 @@ class EmployeeEdit extends Component {
         sdt: '',
         trangThai: '',
     };
+
+    getAll(){
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json'
+            }
+        };
+        try {
+            fetch('http://localhost:8080/employee/getAll', requestOptions)
+                .then(response => response.json())
+                .then(data => this.setState({employee: data}));
+        } catch (err) {
+            console.log(err.toString())
+        }
+    }
 
     constructor(props) {
         super(props);
@@ -67,7 +83,7 @@ class EmployeeEdit extends Component {
                     <Row xs="4">
                         <Col className="bg">
                             <Label for="exampleMaNV">
-                                Mã NV
+                            Mã NV
                             </Label>
                             <Input
                                 id="exampleMaNV"

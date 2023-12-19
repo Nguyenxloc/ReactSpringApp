@@ -1,20 +1,16 @@
 import React, {Component, useEffect} from 'react';
 import {Button, ButtonGroup, Col, Container, Form, FormGroup, Input, Label, Row, Table} from 'reactstrap';
-import AppNavbar from '../AppNavbar';
-import AppFooter from '../AppFooter';
+import AppNavbar from '../../AppNavbar';
+import AppFooter from '../../AppFooter';
 import {Link} from 'react-router-dom';
 
-class EmployeeList extends Component {
+class CuaHangList extends Component {
     emptyItem = {
         ma: '',
         ten: '',
-        tenDem: '',
-        ho: '',
-        gioiTinh: '',
-        ngaySinh: '',
-        diaChi: '',
-        sdt: '',
-        trangThai: '',
+        diaChi:'',
+        thanhPho:'',
+        quocGia:'',
     };
     getAll(){
         const requestOptions = {
@@ -24,16 +20,16 @@ class EmployeeList extends Component {
             }
         };
         try {
-            fetch('http://localhost:8080/employee/getAll', requestOptions)
+            fetch('http://localhost:8080/cuaHang/getAll', requestOptions)
                 .then(response => response.json())
-                .then(data => this.setState({employee: data}));
+                .then(data => this.setState({cuaHang: data}));
         } catch (err) {
             console.log(err.toString())
         }
     }
     constructor(props) {
         super(props);
-        this.state = {employee: [], item: this.emptyItem};
+        this.state = {cuaHang: [], item: this.emptyItem};
         this.remove = this.remove.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -53,7 +49,7 @@ class EmployeeList extends Component {
         event.preventDefault();
         const {item} = this.state;
 
-        await fetch('/employee/add', {
+        await fetch('/cuaHang/add', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -72,25 +68,25 @@ class EmployeeList extends Component {
             }
         };
         try {
-            fetch('http://localhost:8080/employee/getAll', requestOptions)
+            fetch('http://localhost:8080/cuaHang/getAll', requestOptions)
                 .then(response => response.json())
-                .then(data => this.setState({employee: data}));
+                .then(data => this.setState({cuaHang: data}));
         } catch (err) {
             console.log(err.toString())
         }
     }
     async remove(id) {
         let {item} = this.state;
-        const {employee} = this.state;
-        for (let i = 0; i < employee.length; i++) {
-            if(employee[i].idNhanVien===id){
-                item= employee[i];
+        const {cuaHang} = this.state;
+        for (let i = 0; i < cuaHang.length; i++) {
+            if(cuaHang[i].idCuaHang===id){
+                item= cuaHang[i];
             }
         }
         console.log(item);
         console.log("click delete!");
-        console.log(`/employee/${id}`);
-        await fetch(`/employee/${id}`, {
+        console.log(`/cuaHang/${id}`);
+        await fetch(`/cuaHang/${id}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -102,24 +98,22 @@ class EmployeeList extends Component {
     }
 
     render() {
-        const {employee} = this.state;
+        const {cuaHang} = this.state;
         const {item} = this.state;
-        const employeeList = employee.map(employee => {
-            return <tr key={employee.idNhanVien}>
+        const cuaHangList = cuaHang.map(cuaHang => {
+            return <tr key={cuaHang.idCuaHang}>
                 <td>1</td>
-                <td>{employee.ma}</td>
-                <td>{employee.ho} {employee.tenDem} {employee.ten}</td>
-                <td>{employee.gioiTinh}</td>
-                <td>{employee.ngaySinh}</td>
-                <td>{employee.diaChi}</td>
-                <td>{employee.sdt}</td>
-                <td>{employee.trangThai}</td>
+                <td>{cuaHang.ma}</td>
+                <td>{cuaHang.ten}</td>
+                <td>{cuaHang.diaChi}</td>
+                <td>{cuaHang.thanhPho}</td>
+                <td>{cuaHang.quocGia}</td>
                 <td>
                     <ButtonGroup>
                         <Button size="sm" color="primary" tag={Link}
-                                to={"/employee/" + employee.idNhanVien}>Detail</Button>
+                                to={"/cuaHang/" + cuaHang.idCuaHang}>Detail</Button>
                         <Button size="sm" color="danger"
-                                onClick={() => this.remove(employee.idNhanVien)}>Delete</Button>
+                                onClick={() => this.remove(cuaHang.idCuaHang)}>Delete</Button>
                     </ButtonGroup>
                 </td>
             </tr>
@@ -129,17 +123,17 @@ class EmployeeList extends Component {
             <div>
                 <AppNavbar/>
                 <Container fluid>
-                    <h3>Quản lý nhân viên</h3>
+                    <h3>Quản lý cửa hàng</h3>
                     <Form onSubmit={this.handleSubmit}>
                         <Row xs="4">
                             <Col className="bg">
-                                <Label for="exampleMaNV">
+                                <Label for="exampleMa">
                                     Mã NV
                                 </Label>
                                 <Input
-                                    id="exampleMaNV"
+                                    id="exampleMa"
                                     name="ma"
-                                    placeholder="Mã NV"
+                                    placeholder="Mã cửa hàng"
                                     type="text"
                                     value={item.ma}
                                     onChange={this.handleChange}
@@ -163,66 +157,6 @@ class EmployeeList extends Component {
                             </Col>
 
                             <Col className="bg">
-                                <Label for="exampleTenDem">
-                                    Tên đệm
-                                </Label>
-                                <Input
-                                    id="exampleTen"
-                                    name="tenDem"
-                                    placeholder="Tên đệm"
-                                    type="text"
-                                    value={item.tenDem}
-                                    onChange={this.handleChange}
-                                    autoComplete="tenDem"
-                                />
-                            </Col>
-
-                            <Col className="bg">
-                                <Label for="exampleHo">
-                                    Họ
-                                </Label>
-                                <Input
-                                    id="exampleHo"
-                                    name="ho"
-                                    placeholder="Họ"
-                                    type="text"
-                                    value={item.ho}
-                                    onChange={this.handleChange}
-                                    autoComplete="ho"
-                                />
-                            </Col>
-
-                            <Col className="bg">
-                                <Label for="exampleEmail">
-                                    Giới tính
-                                </Label>
-                                <Input
-                                    id="exampleGioiTinh"
-                                    name="gioiTinh"
-                                    placeholder="Giới tính"
-                                    type="text"
-                                    value={item.gioiTinh}
-                                    onChange={this.handleChange}
-                                    autoComplete="gioiTinh"
-                                />
-                            </Col>
-
-                            <Col className="bg">
-                                <Label for="exampleNgaySinh">
-                                    Ngày sinh
-                                </Label>
-                                <Input
-                                    id="exampleNgaySinh"
-                                    name="ngaySinh"
-                                    placeholder="Ngày sinh"
-                                    type="date"
-                                    value={item.ngaySinh}
-                                    onChange={this.handleChange}
-                                    autoComplete="ngaySinh"
-                                />
-                            </Col>
-
-                            <Col className="bg">
                                 <Label for="exampleDiaChi">
                                     Địa chỉ
                                 </Label>
@@ -238,32 +172,31 @@ class EmployeeList extends Component {
                             </Col>
 
                             <Col className="bg">
-                                <Label for="exampleSdt">
-                                    Sđt
+                                <Label for="exampleDiaChi">
+                                    Thành phố
                                 </Label>
                                 <Input
-                                    id="exampleSdt"
-                                    name="sdt"
-                                    placeholder="Sđt"
+                                    id="examplethanhPho"
+                                    name="thanhPho"
+                                    placeholder="Thành phố"
                                     type="text"
-                                    value={item.sdt}
+                                    value={item.thanhPho}
                                     onChange={this.handleChange}
-                                    autoComplete="sdt"
+                                    autoComplete="thanhPho"
                                 />
                             </Col>
-
                             <Col className="bg">
-                                <Label for="exampleTrangThai">
-                                    Trạng thái
+                                <Label for="exampleDiaChi">
+                                    Quốc gia
                                 </Label>
                                 <Input
-                                    id="exampleTrangThai"
-                                    name="trangThai"
-                                    placeholder="Trạng thái"
-                                    type="number"
-                                    value={item.trangThai}
+                                    id="exampleQuocGia"
+                                    name="quocGia"
+                                    placeholder="Quốc gia"
+                                    type="text"
+                                    value={item.quocGia}
                                     onChange={this.handleChange}
-                                    autoComplete="trangThai"
+                                    autoComplete="quocGia"
                                 />
                             </Col>
                         </Row>
@@ -275,18 +208,16 @@ class EmployeeList extends Component {
                         <thead>
                         <tr>
                             <th width="5%">Stt</th>
-                            <th width="5%">Mã NV</th>
+                            <th width="10%">Mã cửa hàng</th>
                             <th width="10%">Tên</th>
-                            <th width="10%">Giới tính</th>
-                            <th width="10%">Ngày sinh</th>
                             <th width="10%">Địa chỉ</th>
-                            <th width="10%">Số điện thoại</th>
-                            <th width="10%">Trạng thái</th>
+                            <th width="10%">Thành phố</th>
+                            <th width="10%">Quốc gia</th>
                             <th width="10%">Hành động</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {employeeList}
+                        {cuaHangList}
                         </tbody>
                     </Table>
                 </Container>
@@ -298,4 +229,4 @@ class EmployeeList extends Component {
     }
 }
 
-export default EmployeeList;
+export default CuaHangList;

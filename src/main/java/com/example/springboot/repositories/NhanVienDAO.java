@@ -103,4 +103,19 @@ public class NhanVienDAO {
             e.printStackTrace();
         }
     }
+
+    public void updateChucVu(ChucVu chucVu) {
+        try {
+            org.hibernate.cfg.Configuration cfg = new org.hibernate.cfg.Configuration();
+            cfg.configure("hibernate.cfg.xml");
+            SessionFactory factory =cfg.buildSessionFactory();
+            Session session = factory.openSession();
+            tx = session.beginTransaction();
+            session.saveOrUpdate(chucVu);
+            tx.commit();
+            System.out.println("update success !");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
