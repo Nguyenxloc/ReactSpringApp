@@ -74,7 +74,7 @@ public class SanPhamDAO {
         }
     }
 
-    public void jdelete(SanPham sanPham) {
+    public void delete(SanPham sanPham) {
         try {
             org.hibernate.cfg.Configuration cfg = new org.hibernate.cfg.Configuration();
             cfg.configure("hibernate.cfg.xml");
@@ -88,4 +88,5 @@ public class SanPhamDAO {
             e.printStackTrace();
         }
     }
+
 }

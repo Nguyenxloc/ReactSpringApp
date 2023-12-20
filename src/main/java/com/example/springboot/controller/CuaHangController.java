@@ -1,6 +1,5 @@
 package com.example.springboot.controller;
 import com.example.springboot.model.CuaHang;
-import com.example.springboot.model.NhanVien;
 import com.example.springboot.service.NhanVienService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

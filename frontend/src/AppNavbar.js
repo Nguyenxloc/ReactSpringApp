@@ -38,6 +38,7 @@ function AppNavbar(args) {
                             </DropdownToggle>
                             <DropdownMenu right>
                                 <DropdownItem  href="http://localhost:3000/sanPham">Sản phẩm</DropdownItem>
+                                <DropdownItem  href="http://localhost:3000/chiTietSp">Chi tiết sản phẩm</DropdownItem>
                                 <DropdownItem  href="http://localhost:3000/mauSac">Màu sắc</DropdownItem>
                                 <DropdownItem  href="https://github.com/reactstrap/reactstrap">Dòng SP</DropdownItem>
                                 <DropdownItem  href="https://github.com/reactstrap/reactstrap">NSX</DropdownItem>

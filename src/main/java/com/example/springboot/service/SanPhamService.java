@@ -11,6 +11,10 @@ public class SanPhamService {
     MauSacDAO mauSacDAO = new MauSacDAO();
     DongSPDAO dongSPDAO = new DongSPDAO();
     NSXDAO nsxdao = new NSXDAO();
+
+    public SanPhamService() {
+    }
+
     public ArrayList<SanPham> getAllSP() {
          return sanPhamDAO.getLst();
     }

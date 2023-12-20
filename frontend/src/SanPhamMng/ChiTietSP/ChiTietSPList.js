@@ -16,7 +16,8 @@ class ChiTietSPList extends Component {
         sdt: '',
         trangThai: '',
     };
-    getAll(){
+
+    getAll() {
         const requestOptions = {
             method: 'GET',
             headers: {
@@ -30,14 +31,18 @@ class ChiTietSPList extends Component {
         } catch (err) {
             console.log(err.toString())
         }
+
+
     }
+
     constructor(props) {
         super(props);
-        this.state = {employee: [], item: this.emptyItem,lstNsx: []};
+        this.state = {employee: [], item: this.emptyItem, lstNsx: []};
         this.remove = this.remove.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     handleChange(event) {
         const target = event.target;
         const value = target.value;
@@ -45,8 +50,8 @@ class ChiTietSPList extends Component {
         let item = {...this.state.item};
         item[name] = value;
         this.setState({item});
-        console.log("name handlechange:"+name);
-        console.log("value handlechange:"+value);
+        console.log("name handlechange:" + name);
+        console.log("value handlechange:" + value);
     }
 
     async handleSubmit(event) {
@@ -78,13 +83,24 @@ class ChiTietSPList extends Component {
         } catch (err) {
             console.log(err.toString())
         }
+
+        try {
+            fetch('http://localhost:8080/sanPham/nsx/getAll', requestOptions)
+                .then(response => response.json())
+                .then(data => this.setState({lstNsx: data}));
+        } catch (err) {
+            console.log(err.toString())
+        }
+
+
     }
+
     async remove(id) {
         let {item} = this.state;
         const {employee} = this.state;
         for (let i = 0; i < employee.length; i++) {
-            if(employee[i].idNhanVien===id){
-                item= employee[i];
+            if (employee[i].idNhanVien === id) {
+                item = employee[i];
             }
         }
         console.log(item);
@@ -126,6 +142,12 @@ class ChiTietSPList extends Component {
             </tr>
         });
 
+        const nsxList = lstNsx.map(lstNsx => {
+            return <option key={lstNsx.idNSX} value={lstNsx.idNSX}>
+                {lstNsx.ma}-{lstNsx.ten}
+            </option>
+        });
+
         return (
             <div>
                 <AppNavbar/>
@@ -135,17 +157,19 @@ class ChiTietSPList extends Component {
                         <Row xs="4">
                             <Col className="bg">
                                 <Label for="exampleMaNV">
-                                    Mã NV
+                                    NSX
                                 </Label>
                                 <Input
-                                    id="exampleMaNV"
-                                    name="ma"
-                                    placeholder="Mã NV"
-                                    type="text"
-                                    value={item.ma}
+                                    id="exampleNSX"
+                                    name="NSX"
+                                    placeholder="NSX"
+                                    type="select"
+                                    value={item.nsx}
                                     onChange={this.handleChange}
                                     autoComplete="ma"
-                                />
+                                >
+                                        {nsxList}
+                                </Input>
                             </Col>
 
                             <Col className="bg">
