@@ -8,6 +8,8 @@ import ChucVuList from "./EmployeeMng/ChucVu/ChucVuList";
 import ChucVuEdit from "./EmployeeMng/ChucVu/ChucVuEdit";
 import cuaHangList from "./EmployeeMng/CuaHang/CuaHangList";
 import cuaHangEdit from "./EmployeeMng/CuaHang/CuaHangEdit";
+import sanPhamList from "./SanPhamMng/SanPham/SanPhamList";
+import sanPhamEdit from "./SanPhamMng/SanPham/SanPhamEdit";
 
 class App extends Component {
     render() {
@@ -21,6 +23,8 @@ class App extends Component {
                     <Route path='/chucVu/:id' exact={true} component={ChucVuEdit}/>
                     <Route path='/cuaHang' exact={true} component={cuaHangList}/>
                     <Route path='/cuaHang/:id' exact={true} component={cuaHangEdit}/>
+                    <Route path='/sanPham' exact={true} component={sanPhamList}/>
+                    <Route path='/sanPham/:id' exact={true} component={sanPhamEdit}/>
                 </Switch>
             </Router>
         )

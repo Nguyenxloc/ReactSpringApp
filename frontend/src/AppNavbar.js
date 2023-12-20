@@ -34,12 +34,13 @@ function AppNavbar(args) {
                         </UncontrolledDropdown>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
-                                Quản lý 1
+                                Quản lý sản phẩm
                             </DropdownToggle>
                             <DropdownMenu right>
-                                <DropdownItem  href="https://github.com/reactstrap/reactstrap">Option 1</DropdownItem>
-                                <DropdownItem  href="https://github.com/reactstrap/reactstrap">Option 2</DropdownItem>
-                                <DropdownItem  href="https://github.com/reactstrap/reactstrap">Option 3</DropdownItem>
+                                <DropdownItem  href="http://localhost:3000/sanPham">Sản phẩm</DropdownItem>
+                                <DropdownItem  href="http://localhost:3000/mauSac">Màu sắc</DropdownItem>
+                                <DropdownItem  href="https://github.com/reactstrap/reactstrap">Dòng SP</DropdownItem>
+                                <DropdownItem  href="https://github.com/reactstrap/reactstrap">NSX</DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
                         <UncontrolledDropdown nav inNavbar>
