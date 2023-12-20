@@ -6,15 +6,15 @@ import {Link} from 'react-router-dom';
 
 class ChiTietSPList extends Component {
     emptyItem = {
-        ma: '',
-        ten: '',
-        tenDem: '',
-        ho: '',
-        gioiTinh: '',
-        ngaySinh: '',
-        diaChi: '',
-        sdt: '',
-        trangThai: '',
+        sp: '',
+        nsx: '',
+        mauSac: '',
+        dongSP: '',
+        namBH: '',
+        mota: '',
+        soLuongTon: '',
+        giaNhap: '',
+        giaBan: '',
     };
 
     getAll() {
@@ -31,13 +31,11 @@ class ChiTietSPList extends Component {
         } catch (err) {
             console.log(err.toString())
         }
-
-
     }
 
     constructor(props) {
         super(props);
-        this.state = {employee: [], item: this.emptyItem, lstNsx: []};
+        this.state = {employee: [], item: this.emptyItem,lstChiTietSP:[],lstSanPham: [], lstNsx: [],lstMauSac: [],lstDongSP: []};
         this.remove = this.remove.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -77,9 +75,25 @@ class ChiTietSPList extends Component {
             }
         };
         try {
-            fetch('http://localhost:8080/employee/getAll', requestOptions)
+            fetch('http://localhost:8080/sanPham/chiTietSP/getAll', requestOptions)
                 .then(response => response.json())
-                .then(data => this.setState({employee: data}));
+                .then(data => this.setState({lstChiTietSP: data}));
+        } catch (err) {
+            console.log(err.toString())
+        }
+
+        try {
+            fetch('http://localhost:8080/sanPham/getAll', requestOptions)
+                .then(response => response.json())
+                .then(data => this.setState({lstSanPham: data}));
+        } catch (err) {
+            console.log(err.toString())
+        }
+
+        try {
+            fetch('http://localhost:8080/sanPham/getAll', requestOptions)
+                .then(response => response.json())
+                .then(data => this.setState({lstSanPham: data}));
         } catch (err) {
             console.log(err.toString())
         }
@@ -92,6 +106,21 @@ class ChiTietSPList extends Component {
             console.log(err.toString())
         }
 
+        try {
+            fetch('http://localhost:8080/sanPham/mauSac/getAll', requestOptions)
+                .then(response => response.json())
+                .then(data => this.setState({lstMauSac: data}));
+        } catch (err) {
+            console.log(err.toString())
+        }
+
+        try {
+            fetch('http://localhost:8080/sanPham/dongSP/getAll', requestOptions)
+                .then(response => response.json())
+                .then(data => this.setState({lstDongSP: data}));
+        } catch (err) {
+            console.log(err.toString())
+        }
 
     }
 
@@ -118,33 +147,47 @@ class ChiTietSPList extends Component {
     }
 
     render() {
-        const {employee} = this.state;
         const {item} = this.state;
+        const {lstSanPham} =this.state;
         const {lstNsx} = this.state;
-        const employeeList = employee.map(employee => {
-            return <tr key={employee.idNhanVien}>
+        const {lstMauSac} = this.state;
+        const {lstDongSP} = this.state;
+        const {lstChiTietSP} = this.state;
+        const chiTietSPList = lstChiTietSP.map(lstChiTietSP => {
+            return <tr key={lstChiTietSP.idChiTietSP}>
                 <td>1</td>
-                <td>{employee.ma}</td>
-                <td>{employee.ho} {employee.tenDem} {employee.ten}</td>
-                <td>{employee.gioiTinh}</td>
-                <td>{employee.ngaySinh}</td>
-                <td>{employee.diaChi}</td>
-                <td>{employee.sdt}</td>
-                <td>{employee.trangThai}</td>
+                <td>{lstChiTietSP.sp.ten} {lstChiTietSP.sp.ma}</td>
                 <td>
                     <ButtonGroup>
                         <Button size="sm" color="primary" tag={Link}
-                                to={"/employee/" + employee.idNhanVien}>Detail</Button>
+                                to={"/sanPham/chiTietSP/" + lstChiTietSP.idChiTietSP}>Detail</Button>
                         <Button size="sm" color="danger"
-                                onClick={() => this.remove(employee.idNhanVien)}>Delete</Button>
+                                onClick={() => this.remove(lstChiTietSP.idChiTietSP)}>Delete</Button>
                     </ButtonGroup>
                 </td>
             </tr>
+        });
+        const sanPhamList = lstSanPham.map(lstSanPham => {
+            return <option key={lstSanPham.idSanPham} value={lstSanPham.idSanPham}>
+                {lstSanPham.ma}-{lstSanPham.ten}
+            </option>
         });
 
         const nsxList = lstNsx.map(lstNsx => {
             return <option key={lstNsx.idNSX} value={lstNsx.idNSX}>
                 {lstNsx.ma}-{lstNsx.ten}
+            </option>
+        });
+
+        const mauSacList = lstMauSac.map(lstMauSac => {
+            return <option key={lstMauSac.idMauSac} value={lstMauSac.idMauSac}>
+                {lstMauSac.ma}-{lstMauSac.ten}
+            </option>
+        });
+
+        const dongSPList = lstDongSP.map(lstDongSP => {
+            return <option key={lstDongSP.idDongSP} value={lstDongSP.idDongSP}>
+                {lstDongSP.ma}-{lstDongSP.ten}
             </option>
         });
 
@@ -155,6 +198,23 @@ class ChiTietSPList extends Component {
                     <h3>Quản lý nhân viên</h3>
                     <Form onSubmit={this.handleSubmit}>
                         <Row xs="4">
+                            <Col className="bg">
+                                <Label for="exampleSanPham">
+                                    Sản phẩm
+                                </Label>
+                                <Input
+                                    id="exampleSanPham"
+                                    name="idSanPham"
+                                    placeholder="Chọn sản phẩm"
+                                    type="select"
+                                    value={item.idSanPham}
+                                    onChange={this.handleChange}
+                                    autoComplete="ma"
+                                >
+                                        {sanPhamList}
+                                </Input>
+                            </Col>
+
                             <Col className="bg">
                                 <Label for="exampleMaNV">
                                     NSX
@@ -168,129 +228,119 @@ class ChiTietSPList extends Component {
                                     onChange={this.handleChange}
                                     autoComplete="ma"
                                 >
-                                        {nsxList}
+                                    {nsxList}
                                 </Input>
                             </Col>
 
                             <Col className="bg">
-                                <Label for="exampleTen">
-                                    Tên
+                                <Label for="exampleMauSac">
+                                    Màu sắc
                                 </Label>
                                 <Input
-                                    id="exampleTen"
-                                    name="ten"
-                                    placeholder="Tên"
-                                    type="text"
-                                    value={item.ten}
+                                    id="exampleMauSac"
+                                    name="MauSac"
+                                    placeholder="MauSac"
+                                    type="select"
+                                    value={item.idMauSac}
                                     onChange={this.handleChange}
-                                    autoComplete="ten"
-                                />
+                                    autoComplete="mauSac"
+                                >
+                                    {mauSacList}
+                                </Input>
                             </Col>
 
                             <Col className="bg">
-                                <Label for="exampleTenDem">
-                                    Tên đệm
+                                <Label for="exampleMauSac">
+                                    Dòng sản phẩm
                                 </Label>
                                 <Input
-                                    id="exampleTen"
-                                    name="tenDem"
-                                    placeholder="Tên đệm"
-                                    type="text"
-                                    value={item.tenDem}
+                                    id="exampleDongSP"
+                                    name="dongSP"
+                                    placeholder="Dòng sản phẩm"
+                                    type="select"
+                                    value={item.idDongSP}
                                     onChange={this.handleChange}
-                                    autoComplete="tenDem"
+                                    autoComplete="dongSP"
+                                >
+                                    {dongSPList}
+                                </Input>
+                            </Col>
+
+                            <Col className="bg">
+                                <Label for="exampleNamBH">
+                                    Năm bảo hành
+                                </Label>
+                                <Input
+                                    id="exampleNamBH"
+                                    name="namBH"
+                                    placeholder="Năm bảo hành"
+                                    type="number"
+                                    value={item.namBH}
+                                    onChange={this.handleChange}
+                                    autoComplete="namBH"
                                 />
                             </Col>
 
                             <Col className="bg">
                                 <Label for="exampleHo">
-                                    Họ
+                                    Mô tả
                                 </Label>
                                 <Input
-                                    id="exampleHo"
-                                    name="ho"
-                                    placeholder="Họ"
+                                    id="exampleMoTa"
+                                    name="moTa"
+                                    placeholder="Mô tả"
                                     type="text"
-                                    value={item.ho}
+                                    value={item.moTa}
                                     onChange={this.handleChange}
-                                    autoComplete="ho"
+                                    autoComplete="moTa"
                                 />
                             </Col>
 
                             <Col className="bg">
-                                <Label for="exampleEmail">
-                                    Giới tính
+                                <Label for="exampleNamBH">
+                                    Số lượng tồn
                                 </Label>
                                 <Input
-                                    id="exampleGioiTinh"
-                                    name="gioiTinh"
-                                    placeholder="Giới tính"
-                                    type="text"
-                                    value={item.gioiTinh}
-                                    onChange={this.handleChange}
-                                    autoComplete="gioiTinh"
-                                />
-                            </Col>
-
-                            <Col className="bg">
-                                <Label for="exampleNgaySinh">
-                                    Ngày sinh
-                                </Label>
-                                <Input
-                                    id="exampleNgaySinh"
-                                    name="ngaySinh"
-                                    placeholder="Ngày sinh"
-                                    type="date"
-                                    value={item.ngaySinh}
-                                    onChange={this.handleChange}
-                                    autoComplete="ngaySinh"
-                                />
-                            </Col>
-
-                            <Col className="bg">
-                                <Label for="exampleDiaChi">
-                                    Địa chỉ
-                                </Label>
-                                <Input
-                                    id="exampleDiaChi"
-                                    name="diaChi"
-                                    placeholder="Địa chỉ"
-                                    type="text"
-                                    value={item.diaChi}
-                                    onChange={this.handleChange}
-                                    autoComplete="diaChi"
-                                />
-                            </Col>
-
-                            <Col className="bg">
-                                <Label for="exampleSdt">
-                                    Sđt
-                                </Label>
-                                <Input
-                                    id="exampleSdt"
-                                    name="sdt"
-                                    placeholder="Sđt"
-                                    type="text"
-                                    value={item.sdt}
-                                    onChange={this.handleChange}
-                                    autoComplete="sdt"
-                                />
-                            </Col>
-
-                            <Col className="bg">
-                                <Label for="exampleTrangThai">
-                                    Trạng thái
-                                </Label>
-                                <Input
-                                    id="exampleTrangThai"
-                                    name="trangThai"
-                                    placeholder="Trạng thái"
+                                    id="exampleSoLuongTon"
+                                    name="soLuongTon"
+                                    placeholder="Số lượng tồn"
                                     type="number"
-                                    value={item.trangThai}
+                                    value={item.soLuongTon}
                                     onChange={this.handleChange}
-                                    autoComplete="trangThai"
+                                    autoComplete="soLuongTon"
                                 />
                             </Col>
+
+                            <Col className="bg">
+                                <Label for="exampleNamBH">
+                                    Giá nhập
+                                </Label>
+                                <Input
+                                    id="exampleGiaNhap"
+                                    name="giaNhap"
+                                    placeholder="Giá nhập"
+                                    type="number"
+                                    value={item.giaNhap}
+                                    onChange={this.handleChange}
+                                    autoComplete="giaNhap"
+                                />
+                            </Col>
+
+                            <Col className="bg">
+                                <Label for="exampleGiaBan">
+                                    Giá bán
+                                </Label>
+                                <Input
+                                    id="exampleGiaBan"
+                                    name="giaBan"
+                                    placeholder="Giá bán"
+                                    type="number"
+                                    value={item.giaBan}
+                                    onChange={this.handleChange}
+                                    autoComplete="giaBan"
+                                />
+                            </Col>
+
                         </Row>
                         <FormGroup>
                             <Button color="primary" type="submit">Add</Button>{' '}
@@ -300,18 +350,20 @@ class ChiTietSPList extends Component {
                         <thead>
                         <tr>
                             <th width="5%">Stt</th>
-                            <th width="5%">Mã NV</th>
-                            <th width="10%">Tên</th>
-                            <th width="10%">Giới tính</th>
-                            <th width="10%">Ngày sinh</th>
-                            <th width="10%">Địa chỉ</th>
-                            <th width="10%">Số điện thoại</th>
-                            <th width="10%">Trạng thái</th>
+                            <th width="10%">Sản phẩm</th>
+                            <th width="10%">NSX</th>
+                            <th width="10%">Màu sắc</th>
+                            <th width="10%">Dòng SP</th>
+                            <th width="10%">Năm BH</th>
+                            <th width="10%">Mô tả</th>
+                            <th width="10%">Số lượng tồn</th>
+                            <th width="10%">Giá nhập</th>
+                            <th width="10%">Giá bán</th>
                             <th width="10%">Hành động</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {employeeList}
+                        {chiTietSPList}
                         </tbody>
                     </Table>
                 </Container>
