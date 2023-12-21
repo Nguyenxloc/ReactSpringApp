@@ -2,6 +2,7 @@ package com.example.springboot.controller;
 
 import com.example.springboot.model.*;
 import com.example.springboot.service.SanPhamService;
+import com.example.springboot.viewModel.ChiTietSPView;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,9 +59,14 @@ public class SanPhamController {
     }
 
     @PostMapping("/chiTietSP/add")
-    public ResponseEntity createChiTietSP(@RequestBody ChiTietSP chiTietSP) {
-        sanPhamService.addChiTietSP(chiTietSP.getIdChiTietSP(), chiTietSP.getSp(), chiTietSP.getNsx(), chiTietSP.getMauSac(), chiTietSP.getDongSP(), chiTietSP.getNamBH(), chiTietSP.getMota(), chiTietSP.getSoLuongTon(), chiTietSP.getGiaNhap(), chiTietSP.getGiaBan(), chiTietSP.getLink());
-        return ResponseEntity.ok(chiTietSP);
+    public ResponseEntity createChiTietSP(@RequestBody ChiTietSPView chiTietSPView) {
+        System.out.println("tessttingggggggggggggggggggggggggggg:"+chiTietSPView.toString());
+        SanPham sp = sanPhamService.getByIDSP(chiTietSPView.getSp());
+        NSX nsx = sanPhamService.getByIDNSX(chiTietSPView.getNsx());
+        MauSac mauSac = sanPhamService.getByIdMauSac(chiTietSPView.getMauSac());
+        DongSP dongSP = sanPhamService.getByIDDongSP(chiTietSPView.getDongSP());
+        sanPhamService.addChiTietSP(null,sp,nsx,mauSac,dongSP, chiTietSPView.getNamBH(), chiTietSPView.getMota(), chiTietSPView.getSoLuongTon(), chiTietSPView.getGiaNhap(), chiTietSPView.getGiaBan(), chiTietSPView.getLink());
+        return ResponseEntity.ok(chiTietSPView);
     }
 
     @PutMapping("/chiTietSP/{id}")

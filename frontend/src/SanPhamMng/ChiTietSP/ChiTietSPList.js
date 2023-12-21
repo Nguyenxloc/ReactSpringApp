@@ -25,9 +25,9 @@ class ChiTietSPList extends Component {
             }
         };
         try {
-            fetch('http://localhost:8080/employee/getAll', requestOptions)
+            fetch('http://localhost:8080/sanPham/chiTietSP/getAll', requestOptions)
                 .then(response => response.json())
-                .then(data => this.setState({employee: data}));
+                .then(data => this.setState({lstChiTietSP: data}));
         } catch (err) {
             console.log(err.toString())
         }
@@ -35,7 +35,7 @@ class ChiTietSPList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {employee: [], item: this.emptyItem,lstChiTietSP:[],lstSanPham: [], lstNsx: [],lstMauSac: [],lstDongSP: []};
+        this.state = {item: this.emptyItem,lstChiTietSP:[],lstSanPham: [], lstNsx: [],lstMauSac: [],lstDongSP: []};
         this.remove = this.remove.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -56,7 +56,7 @@ class ChiTietSPList extends Component {
         event.preventDefault();
         const {item} = this.state;
 
-        await fetch('/employee/add', {
+        await fetch('/sanPham/chiTietSP/add', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -90,13 +90,6 @@ class ChiTietSPList extends Component {
             console.log(err.toString())
         }
 
-        try {
-            fetch('http://localhost:8080/sanPham/getAll', requestOptions)
-                .then(response => response.json())
-                .then(data => this.setState({lstSanPham: data}));
-        } catch (err) {
-            console.log(err.toString())
-        }
 
         try {
             fetch('http://localhost:8080/sanPham/nsx/getAll', requestOptions)
@@ -157,10 +150,18 @@ class ChiTietSPList extends Component {
             return <tr key={lstChiTietSP.idChiTietSP}>
                 <td>1</td>
                 <td>{lstChiTietSP.sp.ten} {lstChiTietSP.sp.ma}</td>
+                <td>{lstChiTietSP.nsx.ma}-{lstChiTietSP.nsx.ten}</td>
+                <td>{lstChiTietSP.mauSac.ma}-{lstChiTietSP.mauSac.ten}</td>
+                <td>{lstChiTietSP.dongSP.ma}-{lstChiTietSP.dongSP.ten}</td>
+                <td>{lstChiTietSP.namBH}-{lstChiTietSP.dongSP.ten}</td>
+                <td>{lstChiTietSP.mota}</td>
+                <td>{lstChiTietSP.soLuongTon}</td>
+                <td>{lstChiTietSP.giaNhap}</td>
+                <td>{lstChiTietSP.giaBan}</td>
                 <td>
                     <ButtonGroup>
                         <Button size="sm" color="primary" tag={Link}
-                                to={"/sanPham/chiTietSP/" + lstChiTietSP.idChiTietSP}>Detail</Button>
+                                to={"/chiTietSP/" + lstChiTietSP.idChiTietSP}>Detail</Button>
                         <Button size="sm" color="danger"
                                 onClick={() => this.remove(lstChiTietSP.idChiTietSP)}>Delete</Button>
                     </ButtonGroup>
@@ -204,10 +205,10 @@ class ChiTietSPList extends Component {
                                 </Label>
                                 <Input
                                     id="exampleSanPham"
-                                    name="idSanPham"
+                                    name="sp"
                                     placeholder="Chọn sản phẩm"
                                     type="select"
-                                    value={item.idSanPham}
+                                    value={item.sp.idSanPham}
                                     onChange={this.handleChange}
                                     autoComplete="ma"
                                 >
@@ -216,15 +217,15 @@ class ChiTietSPList extends Component {
                             </Col>
 
                             <Col className="bg">
-                                <Label for="exampleMaNV">
+                                <Label for="nsx">
                                     NSX
                                 </Label>
                                 <Input
                                     id="exampleNSX"
-                                    name="NSX"
+                                    name="nsx"
                                     placeholder="NSX"
                                     type="select"
-                                    value={item.nsx}
+                                    value={item.nsx.idNSX}
                                     onChange={this.handleChange}
                                     autoComplete="ma"
                                 >
@@ -238,10 +239,10 @@ class ChiTietSPList extends Component {
                                 </Label>
                                 <Input
                                     id="exampleMauSac"
-                                    name="MauSac"
+                                    name="mauSac"
                                     placeholder="MauSac"
                                     type="select"
-                                    value={item.idMauSac}
+                                    value={item.mauSac.idMauSac}
                                     onChange={this.handleChange}
                                     autoComplete="mauSac"
                                 >
@@ -258,7 +259,7 @@ class ChiTietSPList extends Component {
                                     name="dongSP"
                                     placeholder="Dòng sản phẩm"
                                     type="select"
-                                    value={item.idDongSP}
+                                    value={item.dongSP.idDongSP}
                                     onChange={this.handleChange}
                                     autoComplete="dongSP"
                                 >
@@ -287,7 +288,7 @@ class ChiTietSPList extends Component {
                                 </Label>
                                 <Input
                                     id="exampleMoTa"
-                                    name="moTa"
+                                    name="mota"
                                     placeholder="Mô tả"
                                     type="text"
                                     value={item.moTa}
