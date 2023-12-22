@@ -69,6 +69,7 @@ public class ChiTietSPDAO {
             tx = session.beginTransaction();
             session.saveOrUpdate(chiTietSP);
             tx.commit();
+            System.out.println("udpate success !");
         } catch (Exception e) {
             e.printStackTrace();
         }

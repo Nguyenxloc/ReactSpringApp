@@ -4,7 +4,6 @@ import {Button, Col, Container, Form, FormGroup, Input, Label, Row} from 'reacts
 import AppNavbar from '../../AppNavbar';
 
 class ChiTietSPEdit extends Component {
-
     emptyItem = {
         sp: '',
         nsx: '',
@@ -49,8 +48,8 @@ class ChiTietSPEdit extends Component {
         };
 
         if (this.props.match.params.id !== 'new') {
-            const chiTietSP = await (await fetch(`/sanPham/chiTietSP/${this.props.match.params.id}`)).json();
-            this.setState({item: chiTietSP});
+            const chiTietSPView = await (await fetch(`/sanPham/chiTietSPView/${this.props.match.params.id}`)).json();
+            this.setState({item: chiTietSPView});
         }
 
         try {
@@ -107,7 +106,8 @@ class ChiTietSPEdit extends Component {
     async handleSubmit(event) {
         event.preventDefault();
         const {item} = this.state;
-        await fetch('/chiTietSP' + ('/' + item.id), {
+        console.log(item.idChiTietSP);
+        await fetch('/sanPham/chiTietSP' + ('/' + item.idChiTietSP), {
             method:'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -160,10 +160,10 @@ class ChiTietSPEdit extends Component {
                             </Label>
                             <Input
                                 id="exampleSanPham"
-                                name="idSanPham"
+                                name="sp"
                                 placeholder="Chọn sản phẩm"
                                 type="select"
-                                value={item.sp.idSanPham}
+                                value={item.sp}
                                 onChange={this.handleChange}
                                 autoComplete="ma"
                             >
@@ -177,10 +177,10 @@ class ChiTietSPEdit extends Component {
                             </Label>
                             <Input
                                 id="exampleNSX"
-                                name="NSX"
+                                name="nsx"
                                 placeholder="NSX"
                                 type="select"
-                                value={item.nsx.idNSX}
+                                value={item.nsx}
                                 onChange={this.handleChange}
                                 autoComplete="ma"
                             >
@@ -194,10 +194,10 @@ class ChiTietSPEdit extends Component {
                             </Label>
                             <Input
                                 id="exampleMauSac"
-                                name="MauSac"
+                                name="mauSac"
                                 placeholder="MauSac"
                                 type="select"
-                                value={item.mauSac.idMauSac}
+                                value={item.mauSac}
                                 onChange={this.handleChange}
                                 autoComplete="mauSac"
                             >
@@ -214,7 +214,7 @@ class ChiTietSPEdit extends Component {
                                 name="dongSP"
                                 placeholder="Dòng sản phẩm"
                                 type="select"
-                                value={item.dongSP.idDongSP}
+                                value={item.dongSP}
                                 onChange={this.handleChange}
                                 autoComplete="dongSP"
                             >

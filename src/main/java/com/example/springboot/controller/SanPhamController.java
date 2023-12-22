@@ -58,6 +58,13 @@ public class SanPhamController {
         return sanPhamService.getByIDChiTietSP(id);
     }
 
+    @GetMapping("/chiTietSPView/{id}")
+    public ChiTietSPView getChiTietSPByIDView(@PathVariable(value = "id") String id) {
+        ChiTietSP chiTietSP = sanPhamService.getByIDChiTietSP(id);
+        ChiTietSPView chiTietSPView = new ChiTietSPView(chiTietSP.getIdChiTietSP(),chiTietSP.getSp().getIdSanPham(),chiTietSP.getNsx().getIdNSX(),chiTietSP.getMauSac().getIdMauSac(),chiTietSP.getDongSP().getIdDongSP(),chiTietSP.getNamBH(),chiTietSP.getMota(),chiTietSP.getSoLuongTon(),chiTietSP.getGiaNhap(),chiTietSP.getGiaBan(),chiTietSP.getLink());
+        return chiTietSPView;
+    }
+
     @PostMapping("/chiTietSP/add")
     public ResponseEntity createChiTietSP(@RequestBody ChiTietSPView chiTietSPView) {
         System.out.println("tessttingggggggggggggggggggggggggggg:"+chiTietSPView.toString());
@@ -68,11 +75,16 @@ public class SanPhamController {
         sanPhamService.addChiTietSP(null,sp,nsx,mauSac,dongSP, chiTietSPView.getNamBH(), chiTietSPView.getMota(), chiTietSPView.getSoLuongTon(), chiTietSPView.getGiaNhap(), chiTietSPView.getGiaBan(), chiTietSPView.getLink());
         return ResponseEntity.ok(chiTietSPView);
     }
-
     @PutMapping("/chiTietSP/{id}")
-    public ResponseEntity updateChiTietSP(@RequestBody ChiTietSP chiTietSP) {
+    public ResponseEntity updateChiTietSP(@RequestBody ChiTietSPView chiTietSPView) {
+        System.out.println("-------------------------------------------------------------------------------------------------------");
+        SanPham sp = sanPhamService.getByIDSP(chiTietSPView.getSp());
+        NSX nsx = sanPhamService.getByIDNSX(chiTietSPView.getNsx());
+        MauSac mauSac = sanPhamService.getByIdMauSac(chiTietSPView.getMauSac());
+        DongSP dongSP = sanPhamService.getByIDDongSP(chiTietSPView.getDongSP());
+        ChiTietSP chiTietSP = new ChiTietSP(chiTietSPView.getIdChiTietSP(),sp,nsx,mauSac,dongSP, chiTietSPView.getNamBH(), chiTietSPView.getMota(), chiTietSPView.getSoLuongTon(), chiTietSPView.getGiaNhap(), chiTietSPView.getGiaBan(), chiTietSPView.getLink());
         sanPhamService.updateChiTietSP(chiTietSP);
-        return ResponseEntity.ok(chiTietSP);
+        return ResponseEntity.ok(chiTietSPView);
     }
 
     @DeleteMapping("/chiTietSP/{id}")
