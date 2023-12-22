@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import {Button, Col, Container, Form, FormGroup, Input, Label, Row} from 'reactstrap';
 import AppNavbar from '../../AppNavbar';
+import app from "../../App";
+import addLinkImg from "./AddLinkImg";
+import AddLinkImg from "./AddLinkImg";
 
 class ChiTietSPEdit extends Component {
     emptyItem = {
@@ -296,6 +299,14 @@ class ChiTietSPEdit extends Component {
                                 autoComplete="giaBan"
                             />
                         </Col>
+                        <Col className="bg">
+                            <Label for="exampleThemAnh">
+                              Link ảnh
+                            </Label>
+                            <br/>
+                            <Button color="primary" type="submit">Add link image</Button>{' '}
+                        </Col>
+                        <AddLinkImg/>
                     </Row>
                     <FormGroup>
                         <Button color="primary" type="submit">Update</Button>{' '}

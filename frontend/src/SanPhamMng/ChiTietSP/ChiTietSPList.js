@@ -196,7 +196,7 @@ class ChiTietSPList extends Component {
             <div>
                 <AppNavbar/>
                 <Container fluid>
-                    <h3>Quản lý nhân viên</h3>
+                    <h3>Quản lý sản phẩm</h3>
                     <Form onSubmit={this.handleSubmit}>
                         <Row xs="4">
                             <Col className="bg">

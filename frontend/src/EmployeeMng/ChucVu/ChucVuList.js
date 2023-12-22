@@ -72,6 +72,7 @@ class ChucVuList extends Component {
             console.log(err.toString())
         }
     }
+
     async remove(id) {
         let {item} = this.state;
         const {chucVu} = this.state;
