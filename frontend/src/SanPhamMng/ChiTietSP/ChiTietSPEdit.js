@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import {Button, Col, Container, Form, FormGroup, Input, Label, Row} from 'reactstrap';
 import AppNavbar from '../../AppNavbar';
-import app from "../../App";
-import addLinkImg from "./AddLinkImg";
-import AddLinkImg from "./AddLinkImg";
 
 class ChiTietSPEdit extends Component {
     emptyItem = {
@@ -17,6 +14,9 @@ class ChiTietSPEdit extends Component {
         soLuongTon: '',
         giaNhap: '',
         giaBan: '',
+        link1:'',
+        link2:'',
+        link3:'',
     };
 
     getAll(){
@@ -94,7 +94,6 @@ class ChiTietSPEdit extends Component {
         } catch (err) {
             console.log(err.toString())
         }
-
     }
 
     handleChange(event) {
@@ -105,11 +104,9 @@ class ChiTietSPEdit extends Component {
         item[name] = value;
         this.setState({item});
     }
-
     async handleSubmit(event) {
         event.preventDefault();
         const {item} = this.state;
-        console.log(item.idChiTietSP);
         await fetch('/sanPham/chiTietSP' + ('/' + item.idChiTietSP), {
             method:'PUT',
             headers: {
@@ -131,7 +128,7 @@ class ChiTietSPEdit extends Component {
         const sanPhamList = lstSanPham.map(lstSanPham => {
             return <option key={lstSanPham.idSanPham} value={lstSanPham.idSanPham}>
                 {lstSanPham.ma}-{lstSanPham.ten}
-            </option>
+                   </option>
         });
 
         const nsxList = lstNsx.map(lstNsx => {
@@ -156,6 +153,63 @@ class ChiTietSPEdit extends Component {
             <Container>
                 {title}
                 <Form onSubmit={this.handleSubmit}>
+                    <Row xs="3">
+                        <Col className="bg">
+                            <Label for="exampleSanPham">
+                                Hình ảnh 1
+                            </Label>
+                            <br/>
+                            <img src={item.link1} width={300} height={200}></img>
+                            <br/>
+                            <br/>
+                            <Input
+                                id="exampleGiaBan"
+                                name="link1"
+                                placeholder="Link ảnh 1"
+                                type="text"
+                                value={item.link1}
+                                onChange={this.handleChange}
+                                autoComplete="giaBan"
+                            />
+                        </Col>
+                        <Col className="bg">
+                            <Label for="exampleSanPham">
+                                Hình ảnh 2
+                            </Label>
+                            <br/>
+                            <img src={item.link2} width={300} height={200}></img>
+                            <br/>
+                            <br/>
+                            <Input
+                                id="exampleGiaBan"
+                                name="link2"
+                                placeholder="Link ảnh 2"
+                                type="text"
+                                value={item.link2}
+                                onChange={this.handleChange}
+                                autoComplete="giaBan"
+                            />
+                        </Col>
+                        <Col className="bg">
+                            <Label for="exampleSanPham">
+                                Hình ảnh 3
+                            </Label>
+                            <br/>
+                            <img src={item.link3} width={300} height={200}></img>
+                            <br/>
+                            <br/>
+                            <Input
+                                id="exampleGiaBan"
+                                name="link3"
+                                placeholder="Link ảnh 3"
+                                type="text"
+                                value={item.link3}
+                                onChange={this.handleChange}
+                                autoComplete="giaBan"
+                            />
+                        </Col>
+                    </Row>
+                    <br/>
                     <Row xs="4">
                         <Col className="bg">
                             <Label for="exampleSanPham">
@@ -299,15 +353,9 @@ class ChiTietSPEdit extends Component {
                                 autoComplete="giaBan"
                             />
                         </Col>
-                        <Col className="bg">
-                            <Label for="exampleThemAnh">
-                              Link ảnh
-                            </Label>
-                            <br/>
-                            <Button color="primary" type="submit">Add link image</Button>{' '}
-                        </Col>
-                        <AddLinkImg/>
+
                     </Row>
+                    <br/>
                     <FormGroup>
                         <Button color="primary" type="submit">Update</Button>{' '}
                         <Button color="secondary" tag={Link} to="/chiTietSP">Cancel</Button>

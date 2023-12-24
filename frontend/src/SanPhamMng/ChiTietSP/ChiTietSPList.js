@@ -15,6 +15,9 @@ class ChiTietSPList extends Component {
         soLuongTon: '',
         giaNhap: '',
         giaBan: '',
+        link1:'',
+        link2:'',
+        link3:'',
     };
 
     getAll() {
@@ -90,7 +93,6 @@ class ChiTietSPList extends Component {
             console.log(err.toString())
         }
 
-
         try {
             fetch('http://localhost:8080/sanPham/nsx/getAll', requestOptions)
                 .then(response => response.json())
@@ -114,7 +116,6 @@ class ChiTietSPList extends Component {
         } catch (err) {
             console.log(err.toString())
         }
-
     }
 
     async remove(id) {
@@ -171,7 +172,7 @@ class ChiTietSPList extends Component {
         const sanPhamList = lstSanPham.map(lstSanPham => {
             return <option key={lstSanPham.idSanPham} value={lstSanPham.idSanPham}>
                 {lstSanPham.ma}-{lstSanPham.ten}
-            </option>
+                   </option>
         });
 
         const nsxList = lstNsx.map(lstNsx => {
@@ -189,7 +190,7 @@ class ChiTietSPList extends Component {
         const dongSPList = lstDongSP.map(lstDongSP => {
             return <option key={lstDongSP.idDongSP} value={lstDongSP.idDongSP}>
                 {lstDongSP.ma}-{lstDongSP.ten}
-            </option>
+                   </option>
         });
 
         return (
@@ -339,6 +340,49 @@ class ChiTietSPList extends Component {
                                     value={item.giaBan}
                                     onChange={this.handleChange}
                                     autoComplete="giaBan"
+                                />
+                            </Col>
+                            <Col className="bg">
+                                <Label for="exampleGiaBan">
+                                    Link 1
+                                </Label>
+                                <Input
+                                    id="exampleGiaBan"
+                                    name="link1"
+                                    placeholder="Link sản phẩm"
+                                    type="number"
+                                    value={item.giaBan}
+                                    onChange={this.handleChange}
+                                    autoComplete="link1"
+                                />
+                            </Col>
+                            <Col className="bg">
+                                <Label for="exampleGiaBan">
+                                    Link 2
+                                </Label>
+                                <Input
+                                    id="exampleGiaBan"
+                                    name="link2"
+                                    placeholder="Link sản phẩm"
+                                    type="number"
+                                    value={item.giaBan}
+                                    onChange={this.handleChange}
+                                    autoComplete="link2"
+                                />
+                            </Col>
+
+                            <Col className="bg">
+                                <Label for="exampleGiaBan">
+                                    Link3
+                                </Label>
+                                <Input
+                                    id="exampleGiaBan"
+                                    name="link3"
+                                    placeholder="Link sản phẩm"
+                                    type="number"
+                                    value={item.link3}
+                                    onChange={this.handleChange}
+                                    autoComplete="link3"
                                 />
                             </Col>
 

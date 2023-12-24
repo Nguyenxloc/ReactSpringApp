@@ -31,12 +31,17 @@ public class ChiTietSP {
     private double giaNhap;
     @Column(name="GiaBan")
     private double giaBan;
-    @Column(name ="Link")
-    private String link;
+    @Column(name ="Link1")
+    private String link1;
+    @Column(name ="Link2")
+    private String link2;
+    @Column(name ="Link3")
+    private String link3;
+
     public ChiTietSP() {
     }
 
-    public ChiTietSP(String idChiTietSP, SanPham sp, NSX nsx, MauSac mauSac, DongSP dongSP, int namBH, String mota, int soLuongTon, double giaNhap, double giaBan, String link) {
+    public ChiTietSP(String idChiTietSP, SanPham sp, NSX nsx, MauSac mauSac, DongSP dongSP, int namBH, String mota, int soLuongTon, double giaNhap, double giaBan, String link1, String link2, String link3) {
         this.idChiTietSP = idChiTietSP;
         this.sp = sp;
         this.nsx = nsx;
@@ -47,7 +52,9 @@ public class ChiTietSP {
         this.soLuongTon = soLuongTon;
         this.giaNhap = giaNhap;
         this.giaBan = giaBan;
-        this.link = link;
+        this.link1 = link1;
+        this.link2 = link2;
+        this.link3 = link3;
     }
 
     public String getIdChiTietSP() {
@@ -130,12 +137,28 @@ public class ChiTietSP {
         this.giaBan = giaBan;
     }
 
-    public String getLink() {
-        return link;
+    public String getLink1() {
+        return link1;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setLink1(String link1) {
+        this.link1 = link1;
+    }
+
+    public String getLink2() {
+        return link2;
+    }
+
+    public void setLink2(String link2) {
+        this.link2 = link2;
+    }
+
+    public String getLink3() {
+        return link3;
+    }
+
+    public void setLink3(String link3) {
+        this.link3 = link3;
     }
 
     @Override
@@ -151,7 +174,9 @@ public class ChiTietSP {
                 ", soLuongTon=" + soLuongTon +
                 ", giaNhap=" + giaNhap +
                 ", giaBan=" + giaBan +
-                ", link='" + link + '\'' +
+                ", link1='" + link1 + '\'' +
+                ", link2='" + link2 + '\'' +
+                ", link3='" + link3 + '\'' +
                 '}';
     }
 }

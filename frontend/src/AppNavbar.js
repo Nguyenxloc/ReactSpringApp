@@ -30,6 +30,7 @@ function AppNavbar(args) {
                                 <DropdownItem  href="http://localhost:3000/employee">Nhân viên</DropdownItem>
                                 <DropdownItem  href="http://localhost:3000/chucVu">Chức vụ</DropdownItem>
                                 <DropdownItem  href="http://localhost:3000/cuaHang">Cửa hàng</DropdownItem>
+                                <DropdownItem  href="http://localhost:3000/test">Test</DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
                         <UncontrolledDropdown nav inNavbar>

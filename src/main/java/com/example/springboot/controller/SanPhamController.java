@@ -61,7 +61,7 @@ public class SanPhamController {
     @GetMapping("/chiTietSPView/{id}")
     public ChiTietSPView getChiTietSPByIDView(@PathVariable(value = "id") String id) {
         ChiTietSP chiTietSP = sanPhamService.getByIDChiTietSP(id);
-        ChiTietSPView chiTietSPView = new ChiTietSPView(chiTietSP.getIdChiTietSP(),chiTietSP.getSp().getIdSanPham(),chiTietSP.getNsx().getIdNSX(),chiTietSP.getMauSac().getIdMauSac(),chiTietSP.getDongSP().getIdDongSP(),chiTietSP.getNamBH(),chiTietSP.getMota(),chiTietSP.getSoLuongTon(),chiTietSP.getGiaNhap(),chiTietSP.getGiaBan(),chiTietSP.getLink());
+        ChiTietSPView chiTietSPView = new ChiTietSPView(chiTietSP.getIdChiTietSP(),chiTietSP.getSp().getIdSanPham(),chiTietSP.getNsx().getIdNSX(),chiTietSP.getMauSac().getIdMauSac(),chiTietSP.getDongSP().getIdDongSP(),chiTietSP.getNamBH(),chiTietSP.getMota(),chiTietSP.getSoLuongTon(),chiTietSP.getGiaNhap(),chiTietSP.getGiaBan(),chiTietSP.getLink1(),chiTietSP.getLink2(), chiTietSP.getLink3());
         return chiTietSPView;
     }
 
@@ -72,7 +72,7 @@ public class SanPhamController {
         NSX nsx = sanPhamService.getByIDNSX(chiTietSPView.getNsx());
         MauSac mauSac = sanPhamService.getByIdMauSac(chiTietSPView.getMauSac());
         DongSP dongSP = sanPhamService.getByIDDongSP(chiTietSPView.getDongSP());
-        sanPhamService.addChiTietSP(null,sp,nsx,mauSac,dongSP, chiTietSPView.getNamBH(), chiTietSPView.getMota(), chiTietSPView.getSoLuongTon(), chiTietSPView.getGiaNhap(), chiTietSPView.getGiaBan(), chiTietSPView.getLink());
+        sanPhamService.addChiTietSP(null,sp,nsx,mauSac,dongSP, chiTietSPView.getNamBH(), chiTietSPView.getMota(), chiTietSPView.getSoLuongTon(), chiTietSPView.getGiaNhap(), chiTietSPView.getGiaBan(), chiTietSPView.getLink1(),chiTietSPView.getLink2(),chiTietSPView.getLink3());
         return ResponseEntity.ok(chiTietSPView);
     }
     @PutMapping("/chiTietSP/{id}")
@@ -82,7 +82,7 @@ public class SanPhamController {
         NSX nsx = sanPhamService.getByIDNSX(chiTietSPView.getNsx());
         MauSac mauSac = sanPhamService.getByIdMauSac(chiTietSPView.getMauSac());
         DongSP dongSP = sanPhamService.getByIDDongSP(chiTietSPView.getDongSP());
-        ChiTietSP chiTietSP = new ChiTietSP(chiTietSPView.getIdChiTietSP(),sp,nsx,mauSac,dongSP, chiTietSPView.getNamBH(), chiTietSPView.getMota(), chiTietSPView.getSoLuongTon(), chiTietSPView.getGiaNhap(), chiTietSPView.getGiaBan(), chiTietSPView.getLink());
+        ChiTietSP chiTietSP = new ChiTietSP(chiTietSPView.getIdChiTietSP(),sp,nsx,mauSac,dongSP, chiTietSPView.getNamBH(), chiTietSPView.getMota(), chiTietSPView.getSoLuongTon(), chiTietSPView.getGiaNhap(), chiTietSPView.getGiaBan(), chiTietSPView.getLink1(), chiTietSPView.getLink2(), chiTietSPView.getLink3());
         sanPhamService.updateChiTietSP(chiTietSP);
         return ResponseEntity.ok(chiTietSPView);
     }

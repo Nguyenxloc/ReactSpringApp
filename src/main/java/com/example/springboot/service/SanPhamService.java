@@ -39,8 +39,8 @@ public class SanPhamService {
     public ArrayList<ChiTietSP> getAllChiTietSP(){
            return chiTietSPDAO.getLst();
     }
-    public void addChiTietSP(String idChiTietSP, SanPham sp, NSX nsx, MauSac mauSac, DongSP dongSP, int namBH, String mota, int soLuongTon, double giaNhap, double giaBan, String link){
-         chiTietSPDAO.addChiTietSP(idChiTietSP,sp,nsx,mauSac,dongSP,namBH,mota,soLuongTon,giaNhap,giaBan, link);
+    public void addChiTietSP(String idChiTietSP, SanPham sp, NSX nsx, MauSac mauSac, DongSP dongSP, int namBH, String mota, int soLuongTon, double giaNhap, double giaBan, String link1,String link2,String link3){
+         chiTietSPDAO.addChiTietSP(idChiTietSP,sp,nsx,mauSac,dongSP,namBH,mota,soLuongTon,giaNhap,giaBan, link1,link2,link3);
     }
     public ChiTietSP  getByIDChiTietSP(String id){
          return chiTietSPDAO.getByID(id);

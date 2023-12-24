@@ -12,6 +12,7 @@ import sanPhamList from "./SanPhamMng/SanPham/SanPhamList";
 import sanPhamEdit from "./SanPhamMng/SanPham/SanPhamEdit";
 import chiTietSPList from "./SanPhamMng/ChiTietSP/ChiTietSPList";
 import chiTietSPEdit from "./SanPhamMng/ChiTietSP/ChiTietSPEdit";
+import Test from "./testing/test";
 
 class App extends Component {
     render() {
@@ -29,6 +30,7 @@ class App extends Component {
                     <Route path='/sanPham/:id' exact={true} component={sanPhamEdit}/>
                     <Route path='/chiTietSp' exact={true} component={chiTietSPList}/>
                     <Route path='/chiTietSp/:id' exact={true} component={chiTietSPEdit}/>
+                    <Route path='/test' exact={true} component={Test}/>
                 </Switch>
             </Router>
         )

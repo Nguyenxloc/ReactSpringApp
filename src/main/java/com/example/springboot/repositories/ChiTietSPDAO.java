@@ -10,13 +10,13 @@ import java.util.ArrayList;
 public class ChiTietSPDAO {
 //    private SessionFactory factory = HibernateUtil.getFACTORY();
     Transaction tx = null;
-    public void addChiTietSP(String id, SanPham sp, NSX nsx, MauSac mauSac, DongSP dongSP, int namBH, String mota, int soLuongTon, double giaNhap, double giaBan, String link) {
+    public void addChiTietSP(String id, SanPham sp, NSX nsx, MauSac mauSac, DongSP dongSP, int namBH, String mota, int soLuongTon, double giaNhap, double giaBan, String link1,String link2,String link3) {
         org.hibernate.cfg.Configuration cfg = new org.hibernate.cfg.Configuration();
         cfg.configure("hibernate.cfg.xml");
         SessionFactory factory =cfg.buildSessionFactory();
         Session session = factory.openSession();
         Transaction tx = null;
-        ChiTietSP chiTietSP = new ChiTietSP(id, sp, nsx, mauSac, dongSP, namBH, mota, soLuongTon, giaNhap, giaBan,link);
+        ChiTietSP chiTietSP = new ChiTietSP(id, sp, nsx, mauSac, dongSP, namBH, mota, soLuongTon, giaNhap, giaBan,link1,link2,link3);
         try {
             tx = session.beginTransaction();
             session.save(chiTietSP);
