@@ -412,6 +412,7 @@ class ChiTietSPList extends Component {
                         </tbody>
                     </Table>
                 </Container>
+
                 <br/><br/><br/><br/>
                 <br/><br/><br/><br/>
                 <AppFooter/>

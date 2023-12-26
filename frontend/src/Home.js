@@ -3,7 +3,7 @@ import './App.css';
 import AppNavbar from './AppNavbar';
 import AppCarousel from './AppCarousel';
 import AppFooter from './AppFooter';
-import AppWelcomePage from './AppWelcomePage';
+import AppShowProduct from "./AppShowProduct";
 
 class Home extends Component {
     render() {
@@ -11,7 +11,7 @@ class Home extends Component {
             <div>
                 <AppNavbar/>
                 <AppCarousel/>
-                <AppWelcomePage/>
+                <AppShowProduct/>
                 <br/><br/><br/><br/>
                 <AppFooter/>
             </div>
