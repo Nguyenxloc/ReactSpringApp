@@ -10,64 +10,69 @@ import {
 function AppFooter() {
     return (
         <CardGroup>
-            <Card>
+            <Card style={{background: "#4682B4", color: "white"}}>
                 <CardBody>
                     <CardTitle tag="h5">
-                        Card title
+                        Giới thiệu
                     </CardTitle>
                     <CardSubtitle
                         className="mb-2 text-muted"
                         tag="h6"
                     >
-                        Card subtitle
+                        --/demo/--
                     </CardSubtitle>
                     <CardText>
-                        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        The only way to get love is to be lovable. It's very irritating if you have a lot of money.
+                        You'd like to think you could write a check: 'I'll buy a million dollars' worth of love.' But it
+                        doesn't work that way. The more you give love away, the more you get ("Warren Buffett").
                     </CardText>
-                    <Button>
-                        Button
-                    </Button>
+                    <br/><br/>
                 </CardBody>
             </Card>
-            <Card>
+            <Card style={{background: "#4682B4", color: "white"}}>
                 <CardBody>
                     <CardTitle tag="h5">
-                        Card title
+                        Liên hệ
                     </CardTitle>
                     <CardSubtitle
                         className="mb-2 text-muted"
                         tag="h6"
                     >
-                        Card subtitle
+                        --/demo/--
                     </CardSubtitle>
                     <CardText>
-                        This card has supporting text below as a natural lead-in to additional content.
+                        Số 129 Quang Trung, Uông Bí, Quảng Ninh
+                        <br/>
+                        0374223222
+                        <br/>
+                        phuclocub@gmail.com
                     </CardText>
-                    <Button>
-                        Button
-                    </Button>
+                    <br/><br/>
                 </CardBody>
             </Card>
-            <Card>
+            <Card style={{background: "#4682B4", color: "white"}}>
                 <CardBody>
                     <CardTitle tag="h5">
-                        Card title
+                        Kết nối với chúng tôi
                     </CardTitle>
                     <CardSubtitle
                         className="mb-2 text-muted"
                         tag="h6"
                     >
-                        Card subtitle
+                        --/demo/--
                     </CardSubtitle>
                     <CardText>
-                        This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.
+                        FaceBook: 03742223222
+                        <br/>
+                        Instagram: 0374223222
+                        <br/>
+                        Gmail: phuclocub@gmail.com
                     </CardText>
-                    <Button>
-                        Button
-                    </Button>
+                    <br/><br/>
                 </CardBody>
             </Card>
         </CardGroup>
     );
 }
+
 export default AppFooter;

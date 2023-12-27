@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
-
 import {
     Button, ButtonGroup,
     Card, CardBody, CardSubtitle, CardText, CardTitle,
     Col,
-    Container,
+    Container, Nav, NavItem, NavLink,
     Row,
 } from 'reactstrap';
 import AppCellProduct from "./component/AppCellProduct";
-import {Link} from "react-router-dom";
-
 class AppShowProduct extends Component {
     emptyItem = {
         sp: '',
@@ -83,7 +80,8 @@ class AppShowProduct extends Component {
             return <Col className="bg mt-5" key={chiTietSP.idChiTietSP}>
                 <Card
                     style={{
-                        width: '18rm'
+                        width: '330px',
+                        padding: '10px'
                     }}
                 >
                     <AppCellProduct
@@ -111,19 +109,33 @@ class AppShowProduct extends Component {
                 </Card>
             </Col>
         });
+        const navVer =  <Nav vertical style={{width:250,border:"gray"}}>
+            <NavItem>
+                <NavLink href="#">
+                    <Button style={{width: 250,height:50,textAlign:"start",background:"darkred",color:"white",fontSize:20,borderBottom:"white"}} outline>
+                        Danh mục sản phẩm
+                    </Button>
+                    <Button style={{width: 250,height:60,textAlign:"start",fontSize:20,borderBottom:"white"}} outline>
+                        Thắt lưng da
+                    </Button>
+                    <Button style={{width: 250,height:60,textAlign:"start",fontSize:20,borderBottom:"white"}} outline>
+                        Ví da
+                    </Button>
+                    <Button style={{width: 250,height:60,textAlign:"start",fontSize:20,borderBottom:"white"}} outline>
+                        Túi da
+                    </Button>
+                    <Button style={{width: 250,height:60,textAlign:"start",fontSize:20}} outline>
+                        Phụ kiện
+                    </Button>
+                </NavLink>
+            </NavItem>
+        </Nav>
+
         return (
             <Container>
                 <div style={{display: "flex"}}>
-                    <div style={{padding:20}}>
-                        <Col className="bg mt-5">
-                            Menu ffffffffffffffffffffffff
-                        </Col>
-                        <Col className="bg mt-5">
-                            Menu 144444432222fdsaffffffff
-                        </Col>
-                        <Col className="bg mt-5">
-                            Menu 122222333333fdsafdffffff
-                        </Col>
+                    <div style={{padding:20,paddingTop:60,paddingLeft:0}}>
+                        {navVer}
                     </div>
                     <Row xs="3" style={{padding:20}}>
                         {spList}

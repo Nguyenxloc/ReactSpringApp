@@ -94,8 +94,8 @@ function AppCarousel(args) {
             />
         </Carousel>
         <div>
-            <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt="" style={{width:350,height:200,padding:20}}/>
-            <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt="" style={{width:350,height:200,padding:20}}/>
+            <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt="" style={{width:350,height:200,paddingTop:20,paddingBottom:20}}/>
+            <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt="" style={{width:350,height:200,paddingBottom:20}}/>
         </div>                
                 </div>
             </Container>
