@@ -77,7 +77,7 @@ class AppShowProduct extends Component {
     render() {
         const {lstChiTietSP} = this.state;
         const spList = lstChiTietSP.map(chiTietSP => {
-            return <Col className="bg mt-5" key={chiTietSP.idChiTietSP}>
+            return <Col className="bg col-lg-4 col-xs-6 mt-5" key={chiTietSP.idChiTietSP}>
                 <Card
                     style={{
                         width: '330px',
@@ -134,10 +134,10 @@ class AppShowProduct extends Component {
         return (
             <Container>
                 <div style={{display: "flex"}}>
-                    <div style={{padding:20,paddingTop:60,paddingLeft:0}}>
-                        {navVer}
-                    </div>
-                    <Row lg="3" xs="1" style={{padding:20}}>
+                    {/*<div style={{padding:20,paddingTop:60,paddingLeft:0}}>*/}
+                    {/*    {navVer}*/}
+                    {/*</div>*/}
+                    <Row xl="3" xs="2" style={{padding:20}}>
                         {spList}
                     </Row>
                 </div>

@@ -57,7 +57,7 @@ function AppCarousel(args) {
                 onExited={() => setAnimating(false)}
                 key={item.src}
             >
-                <img src={item.src} alt={item.altText} height={360}/>
+                <img src={item.src} alt={item.altText} height={350}/>
                 <CarouselCaption
                     captionText={item.caption}
                     captionHeader={item.caption}
@@ -67,43 +67,48 @@ function AppCarousel(args) {
     });
 
     return (
-                <Row lg="2" xs="1" >
-                    <Col className="bg" style={{padding: 20}}>
-                        <Carousel
-                            style={{width: 940, height: 360, padding: 20}}
-                            activeIndex={activeIndex}
-                            next={next}
-                            previous={previous}
-                            {...args}
-                        >
-                            <CarouselIndicators
-                                items={items}
+                <Container>
+                    <Row className="bg" lg="3" xs="1">
+                        <Col className="bg col-lg-8 mt-3" style={{border:"solid"}}>
+                            <Carousel
+                                style={{}}
                                 activeIndex={activeIndex}
-                                onClickHandler={goToIndex}
-                            />
-                            {slides}
-                            <CarouselControl
-                                direction="prev"
-                                directionText="Previous"
-                                onClickHandler={previous}
-                            />
-                            <CarouselControl
-                                direction="next"
-                                directionText="Next"
-                                onClickHandler={next}
-                            />
-                        </Carousel>
-                    </Col>
-                    <Col className="bg" style={{padding: 20}}>
-                        <div>
-                            <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt=""
-                                 style={{width: 350, height: 200, paddingTop: 20, paddingBottom: 20}}/>
-                            <br/>
-                            <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt=""
-                                 style={{width: 350, height: 200, paddingBottom: 20}}/>
-                        </div>
-                    </Col>
-                </Row>
+                                next={next}
+                                previous={previous}
+                                {...args}
+                            >
+                                <CarouselIndicators
+                                    items={items}
+                                    activeIndex={activeIndex}
+                                    onClickHandler={goToIndex}
+                                />
+                                {slides}
+                                <CarouselControl
+                                    direction="prev"
+                                    directionText="Previous"
+                                    onClickHandler={previous}
+                                />
+                                <CarouselControl
+                                    direction="next"
+                                    directionText="Next"
+                                    onClickHandler={next}
+                                />
+                            </Carousel>
+                        </Col>
+                        <Col className="bg col-lg-4" style={{}}>
+                            <Row className="bg mt-3" lg="1" xs="2">
+                                <Col className="bg col-lg-12 col-xs-6" style={{border:"solid"}}>
+                                <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt=""
+                                     style={{height: 200}}/>
+                                </Col>
+                                <Col className="bg col-lg-12 col-xs-6" style={{border:"solid"}}>
+                                <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt=""
+                                     style={{height: 200}}/>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Container>
     );
 }
 
