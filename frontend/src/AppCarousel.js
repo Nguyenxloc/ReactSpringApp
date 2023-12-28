@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     Carousel,
     CarouselItem,
     CarouselControl,
     CarouselIndicators,
-    CarouselCaption, Container,
+    CarouselCaption, Container, Row, Col,
 } from 'reactstrap';
 
 const items = [
@@ -57,7 +57,7 @@ function AppCarousel(args) {
                 onExited={() => setAnimating(false)}
                 key={item.src}
             >
-                <img src={item.src} alt={item.altText} height={360} />
+                <img src={item.src} alt={item.altText} height={360}/>
                 <CarouselCaption
                     captionText={item.caption}
                     captionHeader={item.caption}
@@ -67,38 +67,43 @@ function AppCarousel(args) {
     });
 
     return (
-        <Container>
-            <div style={{display: "flex"}}>
-        <Carousel
-            style={{width:940,height:360,padding:20}}
-            activeIndex={activeIndex}
-            next={next}
-            previous={previous}
-            {...args}
-        >
-            <CarouselIndicators
-                items={items}
-                activeIndex={activeIndex}
-                onClickHandler={goToIndex}
-            />
-            {slides}
-            <CarouselControl
-                direction="prev"
-                directionText="Previous"
-                onClickHandler={previous}
-            />
-            <CarouselControl
-                direction="next"
-                directionText="Next"
-                onClickHandler={next}
-            />
-        </Carousel>
-        <div>
-            <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt="" style={{width:350,height:200,paddingTop:20,paddingBottom:20}}/>
-            <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt="" style={{width:350,height:200,paddingBottom:20}}/>
-        </div>                
-                </div>
-            </Container>
+                <Row lg="2" xs="1" >
+                    <Col className="bg" style={{padding: 20}}>
+                        <Carousel
+                            style={{width: 940, height: 360, padding: 20}}
+                            activeIndex={activeIndex}
+                            next={next}
+                            previous={previous}
+                            {...args}
+                        >
+                            <CarouselIndicators
+                                items={items}
+                                activeIndex={activeIndex}
+                                onClickHandler={goToIndex}
+                            />
+                            {slides}
+                            <CarouselControl
+                                direction="prev"
+                                directionText="Previous"
+                                onClickHandler={previous}
+                            />
+                            <CarouselControl
+                                direction="next"
+                                directionText="Next"
+                                onClickHandler={next}
+                            />
+                        </Carousel>
+                    </Col>
+                    <Col className="bg" style={{padding: 20}}>
+                        <div>
+                            <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt=""
+                                 style={{width: 350, height: 200, paddingTop: 20, paddingBottom: 20}}/>
+                            <br/>
+                            <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt=""
+                                 style={{width: 350, height: 200, paddingBottom: 20}}/>
+                        </div>
+                    </Col>
+                </Row>
     );
 }
 

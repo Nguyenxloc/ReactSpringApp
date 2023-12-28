@@ -137,7 +137,7 @@ class AppShowProduct extends Component {
                     <div style={{padding:20,paddingTop:60,paddingLeft:0}}>
                         {navVer}
                     </div>
-                    <Row xs="3" style={{padding:20}}>
+                    <Row lg="3" xs="1" style={{padding:20}}>
                         {spList}
                     </Row>
                 </div>

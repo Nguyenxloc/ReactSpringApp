@@ -10,7 +10,7 @@ import {
 function AppFooter() {
     return (
         <CardGroup>
-            <Card style={{background: "#4682B4", color: "white"}}>
+            <Card style={{background: "#008080", color: "white"}}>
                 <CardBody>
                     <CardTitle tag="h5">
                         Giới thiệu
@@ -29,7 +29,7 @@ function AppFooter() {
                     <br/><br/>
                 </CardBody>
             </Card>
-            <Card style={{background: "#4682B4", color: "white"}}>
+            <Card style={{background: "#008080", color: "white"}}>
                 <CardBody>
                     <CardTitle tag="h5">
                         Liên hệ
@@ -50,7 +50,7 @@ function AppFooter() {
                     <br/><br/>
                 </CardBody>
             </Card>
-            <Card style={{background: "#4682B4", color: "white"}}>
+            <Card style={{background: "#008080", color: "white"}}>
                 <CardBody>
                     <CardTitle tag="h5">
                         Kết nối với chúng tôi
