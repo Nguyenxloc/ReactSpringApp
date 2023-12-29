@@ -55,7 +55,7 @@ function AppCellProduct({link1,link2,link3}) {
                 onExited={() => setAnimating(false)}
                 key={item.src}
             >
-                <img src={item.src} alt={item.altText} height={300} width={330} />
+                <img src={item.src} alt={item.altText} height="150px" width="100%" />
                 <CarouselCaption
                     captionText={item.caption}
                     captionHeader={item.caption}

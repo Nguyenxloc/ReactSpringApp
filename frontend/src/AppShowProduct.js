@@ -77,10 +77,11 @@ class AppShowProduct extends Component {
     render() {
         const {lstChiTietSP} = this.state;
         const spList = lstChiTietSP.map(chiTietSP => {
-            return <Col className="bg col-lg-4 col-xs-6 mt-5" key={chiTietSP.idChiTietSP}>
+            return <Col className="bg col-lg-3 col-xs-6 mt-5" key={chiTietSP.idChiTietSP}>
                 <Card
                     style={{
-                        width: '330px',
+                        width: '100%',
+                        height: 300,
                         padding: '10px'
                     }}
                 >
@@ -102,9 +103,6 @@ class AppShowProduct extends Component {
                         <CardText>
                             {chiTietSP.mota}
                         </CardText>
-                        <Button>
-                            Buy product
-                        </Button>
                     </CardBody>
                 </Card>
             </Col>
@@ -137,7 +135,7 @@ class AppShowProduct extends Component {
                     {/*<div style={{padding:20,paddingTop:60,paddingLeft:0}}>*/}
                     {/*    {navVer}*/}
                     {/*</div>*/}
-                    <Row xl="3" xs="2" style={{padding:20}}>
+                    <Row xl="4" xs="2" style={{padding:20}}>
                         {spList}
                     </Row>
                 </div>

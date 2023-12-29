@@ -10,19 +10,19 @@ import {
 
 const items = [
     {
-        src: 'https://picsum.photos/id/123/1200/400',
+        src: 'https://picsum.photos/id/123/1200/800',
         altText: 'Slide 1',
         caption: 'Slide 1',
         key: 1,
     },
     {
-        src: 'https://picsum.photos/id/456/1200/400',
+        src: 'https://picsum.photos/id/456/1200/800',
         altText: 'Slide 2',
         caption: 'Slide 2',
         key: 2,
     },
     {
-        src: 'https://picsum.photos/id/678/1200/400',
+        src: 'https://picsum.photos/id/678/1200/800',
         altText: 'Slide 3',
         caption: 'Slide 3',
         key: 3,
@@ -32,7 +32,6 @@ const items = [
 function AppCarousel(args) {
     const [activeIndex, setActiveIndex] = useState(0);
     const [animating, setAnimating] = useState(false);
-
     const next = () => {
         if (animating) return;
         const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
@@ -57,7 +56,7 @@ function AppCarousel(args) {
                 onExited={() => setAnimating(false)}
                 key={item.src}
             >
-                <img src={item.src} alt={item.altText} height={350}/>
+                <img src={item.src} alt={item.altText} style={{width: "100%", height: "100%"}}/>
                 <CarouselCaption
                     captionText={item.caption}
                     captionHeader={item.caption}
@@ -67,48 +66,48 @@ function AppCarousel(args) {
     });
 
     return (
-                <Container>
-                    <Row className="bg" lg="3" xs="1">
-                        <Col className="bg col-lg-8 mt-3" style={{border:"solid"}}>
-                            <Carousel
-                                style={{}}
-                                activeIndex={activeIndex}
-                                next={next}
-                                previous={previous}
-                                {...args}
-                            >
-                                <CarouselIndicators
-                                    items={items}
-                                    activeIndex={activeIndex}
-                                    onClickHandler={goToIndex}
-                                />
-                                {slides}
-                                <CarouselControl
-                                    direction="prev"
-                                    directionText="Previous"
-                                    onClickHandler={previous}
-                                />
-                                <CarouselControl
-                                    direction="next"
-                                    directionText="Next"
-                                    onClickHandler={next}
-                                />
-                            </Carousel>
+        <Container>
+            <Row className="bg" lg="3" xs="1">
+                <Col className="bg col-lg-8 mt-3">
+                    <Carousel
+                        style={{width: "100%", height: "100%", border: "solid"}}
+                        activeIndex={activeIndex}
+                        next={next}
+                        previous={previous}
+                        {...args}
+                    >
+                        <CarouselIndicators
+                            items={items}
+                            activeIndex={activeIndex}
+                            onClickHandler={goToIndex}
+                        />
+                        {slides}
+                        <CarouselControl
+                            direction="prev"
+                            directionText="Previous"
+                            onClickHandler={previous}
+                        />
+                        <CarouselControl
+                            direction="next"
+                            directionText="Next"
+                            onClickHandler={next}
+                        />
+                    </Carousel>
+                </Col>
+                <Col className="bg col-lg-4" style={{}}>
+                    <Row className="bg mt-3" lg="1" xs="1">
+                        <Col className="bg col-lg-12 col-xs-12" style={{border: "solid"}}>
+                            <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt=""
+                                 style={{width: "100%", height: "100%"}}/>
                         </Col>
-                        <Col className="bg col-lg-4" style={{}}>
-                            <Row className="bg mt-3" lg="1" xs="2">
-                                <Col className="bg col-lg-12 col-xs-6" style={{border:"solid"}}>
-                                <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt=""
-                                     style={{height: 200}}/>
-                                </Col>
-                                <Col className="bg col-lg-12 col-xs-6" style={{border:"solid"}}>
-                                <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt=""
-                                     style={{height: 200}}/>
-                                </Col>
-                            </Row>
+                        <Col className="bg col-lg-12 col-xs-12 mt-3" style={{border: "solid"}}>
+                            <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt=""
+                                 style={{width: "100%", height: "100%"}}/>
                         </Col>
                     </Row>
-                </Container>
+                </Col>
+            </Row>
+        </Container>
     );
 }
 
