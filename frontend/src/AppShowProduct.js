@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './App.css';
 import {
     Button, ButtonGroup,
     Card, CardBody, CardSubtitle, CardText, CardTitle,
@@ -77,11 +78,11 @@ class AppShowProduct extends Component {
     render() {
         const {lstChiTietSP} = this.state;
         const spList = lstChiTietSP.map(chiTietSP => {
-            return <Col className="bg col-lg-3 col-xs-6 mt-5" key={chiTietSP.idChiTietSP}>
+            return <Col className="bg col-xl-4 col-xs-6 mt-5" key={chiTietSP.idChiTietSP}>
                 <Card
                     style={{
                         width: '100%',
-                        height: 300,
+                        height: '100%',
                         padding: '10px'
                     }}
                 >
@@ -91,51 +92,54 @@ class AppShowProduct extends Component {
                         link3={chiTietSP.link3}
                     />
                     <CardBody>
-                        <CardTitle tag="h5">
+                        <CardTitle tag="h5" style={{fontSize: "14px"}}>
                             {chiTietSP.sp.ten}
                         </CardTitle>
                         <CardSubtitle
                             className="mb-2 text-muted"
                             tag="h6"
+                            style={{fontSize: "14px"}}
                         >
                             Price: {chiTietSP.giaBan}$
                         </CardSubtitle>
-                        <CardText>
+                        <CardText style={{fontSize: "14px"}}>
                             {chiTietSP.mota}
                         </CardText>
                     </CardBody>
                 </Card>
             </Col>
         });
-        const navVer =  <Nav vertical style={{width:250,border:"gray"}}>
-            <NavItem>
-                <NavLink href="#">
-                    <Button style={{width: 250,height:50,textAlign:"start",background:"darkred",color:"white",fontSize:20,borderBottom:"white"}} outline>
-                        Danh mục sản phẩm
-                    </Button>
-                    <Button style={{width: 250,height:60,textAlign:"start",fontSize:20,borderBottom:"white"}} outline>
-                        Thắt lưng da
-                    </Button>
-                    <Button style={{width: 250,height:60,textAlign:"start",fontSize:20,borderBottom:"white"}} outline>
-                        Ví da
-                    </Button>
-                    <Button style={{width: 250,height:60,textAlign:"start",fontSize:20,borderBottom:"white"}} outline>
-                        Túi da
-                    </Button>
-                    <Button style={{width: 250,height:60,textAlign:"start",fontSize:20}} outline>
-                        Phụ kiện
-                    </Button>
-                </NavLink>
-            </NavItem>
-        </Nav>
-
+        const navVer =
+            <div className="navVer">
+                <Nav vertical style={{width:250,border:"gray"}}>
+                    <NavItem>
+                        <NavLink href="#">
+                            <Button style={{width: 250,height:50,textAlign:"start",background:"darkred",color:"white",fontSize:20,borderBottom:"white"}} outline>
+                                Danh mục sản phẩm
+                            </Button>
+                            <Button style={{width: 250,height:60,textAlign:"start",fontSize:20,borderBottom:"white"}} outline>
+                                Thắt lưng da
+                            </Button>
+                            <Button style={{width: 250,height:60,textAlign:"start",fontSize:20,borderBottom:"white"}} outline>
+                                Ví da
+                            </Button>
+                            <Button style={{width: 250,height:60,textAlign:"start",fontSize:20,borderBottom:"white"}} outline>
+                                Túi da
+                            </Button>
+                            <Button style={{width: 250,height:60,textAlign:"start",fontSize:20}} outline>
+                                Phụ kiện
+                            </Button>
+                        </NavLink>
+                    </NavItem>
+                </Nav>
+            </div>
         return (
             <Container>
                 <div style={{display: "flex"}}>
-                    {/*<div style={{padding:20,paddingTop:60,paddingLeft:0}}>*/}
-                    {/*    {navVer}*/}
-                    {/*</div>*/}
-                    <Row xl="4" xs="2" style={{padding:20}}>
+                    <div style={{padding:20,paddingTop:60,paddingLeft:0}}>
+                        {navVer}
+                    </div>
+                    <Row xl="3" xs="2" style={{padding:20}}>
                         {spList}
                     </Row>
                 </div>

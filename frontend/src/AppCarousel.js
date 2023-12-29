@@ -7,22 +7,21 @@ import {
     CarouselIndicators,
     CarouselCaption, Container, Row, Col,
 } from 'reactstrap';
-
 const items = [
     {
-        src: 'https://picsum.photos/id/123/1200/800',
+        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Ph%E1%BB%91_T%E1%BA%A1_Hi%E1%BB%87n_-_NKS.jpg/800px-Ph%E1%BB%91_T%E1%BA%A1_Hi%E1%BB%87n_-_NKS.jpg',
         altText: 'Slide 1',
         caption: 'Slide 1',
         key: 1,
     },
     {
-        src: 'https://picsum.photos/id/456/1200/800',
+        src: 'https://cdn.pixabay.com/photo/2021/08/04/02/54/hoi-an-6520902_960_720.jpg',
         altText: 'Slide 2',
         caption: 'Slide 2',
         key: 2,
     },
     {
-        src: 'https://picsum.photos/id/678/1200/800',
+        src: 'https://vcdn1-vnexpress.vnecdn.net/2021/03/21/phocoHaNoi-1616302929-4490-1616303680.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=0oOjUngzMxH_Py-FbauYyg',
         altText: 'Slide 3',
         caption: 'Slide 3',
         key: 3,
@@ -68,9 +67,8 @@ function AppCarousel(args) {
     return (
         <Container>
             <Row className="bg" lg="3" xs="1">
-                <Col className="bg col-lg-8 mt-3">
+                <Col className="bg col-lg-8 mt-3" >
                     <Carousel
-                        style={{width: "100%", height: "100%", border: "solid"}}
                         activeIndex={activeIndex}
                         next={next}
                         previous={previous}
@@ -96,12 +94,12 @@ function AppCarousel(args) {
                 </Col>
                 <Col className="bg col-lg-4" style={{}}>
                     <Row className="bg mt-3" lg="1" xs="1">
-                        <Col className="bg col-lg-12 col-xs-12" style={{border: "solid"}}>
-                            <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt=""
+                        <Col className="bg col-lg-12 col-xs-12" style={{}}>
+                            <img src="https://www.ochrehandcrafted.com/cdn/shop/products/slimminimalistcardleatherwallet-OCHREhandcrafted_fbe9b50a-297e-4b7f-9335-0337594db9c7_600x.jpg?v=1668699217" alt=""
                                  style={{width: "100%", height: "100%"}}/>
                         </Col>
-                        <Col className="bg col-lg-12 col-xs-12 mt-3" style={{border: "solid"}}>
-                            <img src="https://ladaleather.com/wp-content/uploads/2022/07/DSCF9724.jpg" alt=""
+                        <Col className="bg col-lg-12 col-xs-12 mt-3" style={{}}>
+                            <img src="https://www.galenleather.com/cdn/shop/products/leather-zippered-mega-mini-wallet-crazy-horse-brown_1500x.jpg?v=1625262721" alt=""
                                  style={{width: "100%", height: "100%"}}/>
                         </Col>
                     </Row>

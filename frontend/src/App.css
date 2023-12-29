@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+@media only screen and (min-resolution: 100dpi){
+  .navVer{
+    display: none
+  }
+}
