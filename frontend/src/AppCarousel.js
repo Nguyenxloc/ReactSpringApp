@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import {
     Carousel,
     CarouselItem,
@@ -54,8 +55,9 @@ function AppCarousel(args) {
                 onExiting={() => setAnimating(true)}
                 onExited={() => setAnimating(false)}
                 key={item.src}
+                className="carouselItem"
             >
-                <img src={item.src} alt={item.altText} style={{width: "100%", height: "100%"}}/>
+                <img src={item.src} alt={item.altText} style={{width:"100%", height:"100%"}}/>
                 <CarouselCaption
                     captionText={item.caption}
                     captionHeader={item.caption}
@@ -67,8 +69,9 @@ function AppCarousel(args) {
     return (
         <Container>
             <Row className="bg" lg="3" xs="1">
-                <Col className="bg col-lg-8 mt-3" >
+                <Col className="bg col-lg-8 mt-3" style={{}}>
                     <Carousel
+                        style={{width:"100%",height:"100%"}}
                         activeIndex={activeIndex}
                         next={next}
                         previous={previous}
