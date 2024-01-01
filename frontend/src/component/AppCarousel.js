@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import '../App.css';
 import {
     Carousel,
     CarouselItem,
@@ -67,7 +67,7 @@ function AppCarousel(args) {
     });
 
     return (
-        <Container>
+        <div className="AppCarousel container-xl">
             <Row className="bg" lg="3" xs="1">
                 <Col className="bg col-lg-8 mt-3" style={{}}>
                     <Carousel
@@ -108,7 +108,7 @@ function AppCarousel(args) {
                     </Row>
                 </Col>
             </Row>
-        </Container>
+        </div>
     );
 }
 

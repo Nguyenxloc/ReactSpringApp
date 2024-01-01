@@ -1,7 +1,7 @@
 import React, {Component, useEffect} from 'react';
 import {Button, ButtonGroup, Col, Container, Form, FormGroup, Input, Label, Row, Table} from 'reactstrap';
-import AppNavbar from '../../AppNavbar';
-import AppFooter from '../../AppFooter';
+import AppNavbar from '../../component/AppNavbar';
+import AppFooter from '../../component/AppFooter';
 import {Link} from 'react-router-dom';
 
 class SanPhamList extends Component {

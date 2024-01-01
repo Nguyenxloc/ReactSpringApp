@@ -1,7 +1,6 @@
 .App {
   text-align: center;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -44,42 +43,11 @@
 }
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
-
-.cards {
-  width: 100%;
-  display: flex;
-  display: -webkit-flex;
-  justify-content: center;
-  -webkit-justify-content: center;
-  max-width: 820px;
-}
-
+/*css for card product with zoomin hover affect*/
+/*-------------------------------------------------*/
+/*-------------------------------------------------*/
 .card--1 .card__img, .card--1 .card__img--hover {
-  background-image: url('https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
-}
 
-.card--2 .card__img, .card--2 .card__img--hover {
-  background-image: url('https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
-}
-
-.card__like {
-  width: 18px;
-}
-
-.card__clock {
-  width: 15px;
-  vertical-align: middle;
-  fill: #AD7D52;
-}
-.card__time {
-  font-size: 12px;
-  color: #AD7D52;
-  vertical-align: middle;
-  margin-left: 5px;
-}
-
-.card__clock-info {
-  float: right;
 }
 
 .card__img {
@@ -91,7 +59,6 @@
   height: 235px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
-
 }
 
 .card__info-hover {
@@ -113,10 +80,9 @@
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   top: 0;
-
 }
+
 .card {
-  margin-right: 25px;
   transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
   background-color: #fff;
   width: 100%;
@@ -125,6 +91,7 @@
   overflow: hidden;
   box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
 }
+
 .card:hover {
   box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
   transform: scale(1.10, 1.10);
@@ -178,4 +145,20 @@
 .card:hover .card__info-hover {
   opacity: 1;
 }
+/*--------------------------------------------*/
+/*css for detailproduct view*/
 
+.ListProduct{
+}
+
+.AppCarousel{
+}
+
+.SubLstProduct{
+  padding-left: 20px;
+  border: #0a58ca solid;
+}
+
+.navVer{
+  border: #0a3622 solid;
+}

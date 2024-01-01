@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import AppCarousel from './AppCarousel';
-import AppFooter from './AppFooter';
-import AppShowProduct from "./AppShowProduct";
+import AppCarousel from './component/AppCarousel';
+import AppFooter from './component/AppFooter';
+import ListProduct from "./component/ListProduct";
 import NavBar from "./component/NavBar";
+
 class Home extends Component {
     render() {
         return (
             <div>
                 <NavBar/>
                 <AppCarousel/>
-                <AppShowProduct/>
+                <ListProduct/>
                 <br/><br/><br/><br/>
                 <AppFooter/>
             </div>

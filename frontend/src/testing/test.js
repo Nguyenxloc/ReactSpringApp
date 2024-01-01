@@ -1,8 +1,8 @@
 import React, {Component, useEffect} from 'react';
 import {Button, ButtonGroup, Col, Container, Form, FormGroup, Input, Label, Row, Table} from 'reactstrap';
 import {Link} from 'react-router-dom';
-import AppNavbar from "../AppNavbar";
-import AppFooter from "../AppFooter";
+import AppNavbar from "../component/AppNavbar";
+import AppFooter from "../component/AppFooter";
 
 class Test extends Component {
     emptyItem = {
