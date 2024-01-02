@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import {Button, Col, Container, Form, FormGroup, Input, Label, Row} from 'reactstrap';
-import AppNavbar from '../../component/AppNavbar';
+import NavbarComOld from '../../component/NavbarComOld';
 
 class EmployeeEdit extends Component {
 
@@ -76,7 +76,7 @@ class EmployeeEdit extends Component {
         const {item} = this.state;
         const title = <h2>{'Edit Employee'}</h2>;
         return <div>
-            <AppNavbar/>
+            <NavbarComOld/>
             <Container>
                 {title}
                 <Form onSubmit={this.handleSubmit}>

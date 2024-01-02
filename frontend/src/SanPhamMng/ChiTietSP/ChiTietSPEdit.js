@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import {Button, Col, Container, Form, FormGroup, Input, Label, Row} from 'reactstrap';
-import AppNavbar from '../../component/AppNavbar';
+import NavbarComOld from '../../component/NavbarComOld';
 
 class ChiTietSPEdit extends Component {
     emptyItem = {
@@ -149,7 +149,7 @@ class ChiTietSPEdit extends Component {
             </option>
         });
         return <div>
-            <AppNavbar/>
+            <NavbarComOld/>
             <Container>
                 {title}
                 <Form onSubmit={this.handleSubmit}>

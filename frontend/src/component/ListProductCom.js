@@ -6,7 +6,7 @@ import {
     Nav, NavItem, NavLink,
     Row,
 } from 'reactstrap';
-class ListProduct extends Component {
+class ListProductCom extends Component {
     emptyItem = {
         sp: '',
         nsx: '',
@@ -70,6 +70,7 @@ class ListProduct extends Component {
             console.log(err.toString())
         }
     }
+
     render() {
         const {lstChiTietSP} = this.state;
         const spList = lstChiTietSP.map(chiTietSP => {
@@ -126,4 +127,4 @@ class ListProduct extends Component {
     }
 }
 
-export default ListProduct;
+export default ListProductCom;

@@ -1,7 +1,7 @@
 import React, {Component, useEffect} from 'react';
 import {Button, ButtonGroup, Col, Container, Form, FormGroup, Input, Label, Row, Table} from 'reactstrap';
-import AppNavbar from '../../component/AppNavbar';
-import AppFooter from '../../component/AppFooter';
+import NavbarComOld from '../../component/NavbarComOld';
+import FooterCom from '../../component/FooterCom';
 import {Link} from 'react-router-dom';
 
 class CuaHangList extends Component {
@@ -121,7 +121,7 @@ class CuaHangList extends Component {
 
         return (
             <div>
-                <AppNavbar/>
+                <NavbarComOld/>
                 <Container fluid>
                     <h3>Quản lý cửa hàng</h3>
                     <Form onSubmit={this.handleSubmit}>
@@ -223,7 +223,7 @@ class CuaHangList extends Component {
                 </Container>
                 <br/><br/><br/><br/>
                 <br/><br/><br/><br/>
-                <AppFooter/>
+                <FooterCom/>
             </div>
         );
     }

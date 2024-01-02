@@ -7,7 +7,7 @@ import {
 
 } from 'reactstrap';
 
-function AppFooter() {
+function FooterCom() {
     return (
         <CardGroup>
             <Card style={{background: "#008080", color: "white"}}>
@@ -75,4 +75,4 @@ function AppFooter() {
     );
 }
 
-export default AppFooter;
+export default FooterCom;

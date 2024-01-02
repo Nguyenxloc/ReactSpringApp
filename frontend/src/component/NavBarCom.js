@@ -4,7 +4,7 @@ import {
     Button, Input,
 } from 'reactstrap';
 
-function NavBar(args) {
+function NavBarCom(args) {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
     return (
@@ -54,4 +54,4 @@ function NavBar(args) {
     );
 }
 
-export default NavBar;
+export default NavBarCom;

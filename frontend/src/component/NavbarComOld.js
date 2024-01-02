@@ -12,7 +12,7 @@ import {
     DropdownItem, NavItem, NavLink,
 } from 'reactstrap';
 
-function AppNavbar(args) {
+function NavbarComOld(args) {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
     return (
@@ -70,4 +70,4 @@ function AppNavbar(args) {
     );
 }
 
-export default AppNavbar;
+export default NavbarComOld;

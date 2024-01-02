@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Css/DetailProduct.scss';
 import {Col} from "reactstrap";
-function DetailProduct({link1,link2,link3}) {
+function DetailProductCom({link1,link2,link3}) {
  return (
-     <Col className="bg col-xl-6 col-xs-6 mt-5">
+     <Col className="bg col-xl-12 col-xs-12 mt-5" style={{border:"solid"}}>
      <section>
         <div className="container">
             <div className="carousel">
-                <input type="radio" name="slides" checked="checked" id="slide-1"/>
+                <input type="radio" name="slides" id="slide-1"/>
                     <input type="radio" name="slides" id="slide-2"/>
                         <input type="radio" name="slides" id="slide-3"/>
                             <input type="radio" name="slides" id="slide-4"/>
@@ -109,4 +109,4 @@ function DetailProduct({link1,link2,link3}) {
 );
 }
 
-export default DetailProduct;
+export default DetailProductCom;

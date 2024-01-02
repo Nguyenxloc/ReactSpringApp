@@ -29,7 +29,7 @@ const items = [
     },
 ];
 
-function AppCarousel(args) {
+function CarouselCom(args) {
     const [activeIndex, setActiveIndex] = useState(0);
     const [animating, setAnimating] = useState(false);
     const next = () => {
@@ -112,4 +112,4 @@ function AppCarousel(args) {
     );
 }
 
-export default AppCarousel;
+export default CarouselCom;

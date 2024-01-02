@@ -8,7 +8,7 @@ import {
     CarouselCaption,
 } from 'reactstrap';
 
-function AppCellProduct({link1,link2,link3}) {
+function CellProductCom({link1,link2,link3}) {
     const items = [
         {
             src: link1,
@@ -92,4 +92,4 @@ function AppCellProduct({link1,link2,link3}) {
     );
 }
 
-export default AppCellProduct;
+export default CellProductCom;

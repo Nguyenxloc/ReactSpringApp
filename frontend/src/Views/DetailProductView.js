@@ -7,10 +7,10 @@ import {
     Container, Nav, NavItem, NavLink,
     Row,
 } from 'reactstrap';
-import AppFooter from '../component/AppFooter';
-import DetailProduct from "../component/DetailProduct";
-import NavBar from "../component/NavBar";
-class AppDetailProduct extends Component {
+import FooterCom from '../component/FooterCom';
+import DetailProductCom from "../component/DetailProductCom";
+import NavBarCom from "../component/NavBarCom";
+class DetailProductView extends Component {
     emptyItem = {
         sp: '',
         nsx: '',
@@ -98,7 +98,7 @@ class AppDetailProduct extends Component {
         });
         const navVer =
             <div className="navVer">
-                <Nav vertical style={{width:250,border:"gray"}}>
+                <Nav vertical style={{width:270,border:"gray"}}>
                     <NavItem>
                         <NavLink href="#">
                             <Button style={{width: 250,height:50,textAlign:"start",background:"darkred",color:"white",fontSize:20,borderBottom:"white"}} outline>
@@ -121,21 +121,21 @@ class AppDetailProduct extends Component {
                 </Nav>
             </div>
         return (
-            <Container>
-                <NavBar/>
-                <div style={{display: "flex"}}>
-                    <div style={{padding:20,paddingTop:60,paddingLeft:0}}>
+            <div>
+                <NavBarCom/>
+                <div className="DetailProductViewCSS container-xl" style={{display: "flex"}}>
+                    <div className="mt-5" style={{}}>
                         {navVer}
                     </div>
-                    <Row xl="2" xs="2" style={{}}>
-                        <DetailProduct/>
+                    <Row xl="1" xs="1" style={{border:"solid"}}>
+                        <DetailProductCom/>
                     </Row>
                 </div>
                 <br/><br/><br/><br/>
-                <AppFooter/>
-            </Container>
+                <FooterCom/>
+            </div>
         );
     }
 }
 
-export default AppDetailProduct;
+export default DetailProductView;

@@ -1,8 +1,8 @@
 import React, {Component, useEffect} from 'react';
 import {Button, ButtonGroup, Col, Container, Form, FormGroup, Input, Label, Row, Table} from 'reactstrap';
 import {Link} from 'react-router-dom';
-import AppNavbar from "../component/AppNavbar";
-import AppFooter from "../component/AppFooter";
+import NavbarComOld from "../component/NavbarComOld";
+import FooterCom from "../component/FooterCom";
 
 class Test extends Component {
     emptyItem = {
@@ -108,7 +108,7 @@ class Test extends Component {
                 });
                 return (
                 <div>
-                    <AppNavbar/>
+                    <NavbarComOld/>
                     <Container fluid>
                         <h3>Testing</h3>
                         <Form onSubmit={this.handleSubmit}>
@@ -122,7 +122,7 @@ class Test extends Component {
                     </Container>
                     <br/><br/><br/><br/>
                     <br/><br/><br/><br/>
-                    <AppFooter/>
+                    <FooterCom/>
                 </div>
                 );
                 }
