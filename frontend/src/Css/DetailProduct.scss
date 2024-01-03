@@ -22,14 +22,11 @@
 // Styling
 
 section {
-  padding: 50px 0;
-  border: red solid;
 }
 
 .container {
   margin: 0 auto;
-  padding: 0 20px;
-
+  padding-top: 55px;
 }
 
 .carousel {
@@ -37,7 +34,7 @@ section {
   text-align: left;
   position: relative;
   margin-bottom: 22px;
-  border: violet solid;
+  border: darkred solid;
   > input {
     clip: rect(1px, 1px, 1px, 1px);
     clip-path: inset(50%);
@@ -73,7 +70,14 @@ section {
   white-space: nowrap;
   box-sizing: border-box;
   display: flex;
-  border: #0a58ca solid;
+  width: 106%;
+  margin-left: -10px;
+}
+figcaption {
+  align-self: flex-start;
+  flex: 0 0 auto;
+  width:100%;
+  border: #0d6efd solid;
 }
 
 .carousel__slide {
@@ -87,6 +91,7 @@ section {
   vertical-align: top;
   box-sizing: border-box;
   white-space: normal;
+  border: #0d6efd solid;
   figure {
     display: flex;
     margin: 0;
@@ -94,23 +99,13 @@ section {
 
   div {
     @include aspect-ratio(3, 2);
-    width: 50%;
-    border: #664d03 solid;
+    width: 100%;
   }
 
   img {
     display: block;
     flex: 1 1 auto;
     object-fit: cover;
-    object-fit: cover;
-    border: #75b798 solid;
-  }
-
-  figcaption {
-    align-self: flex-start;
-    flex: 0 0 auto;
-    width: 35%;
-    border: saddlebrown solid;
   }
 
   .credit {
@@ -140,7 +135,6 @@ section {
     max-width: calc((100% / 6) - 20px);
     margin: 0 10px;
     transition: all 300ms ease-in-out;
-    border: #0a53be solid;
   }
 
   label {
@@ -164,6 +158,5 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border: #0dcaf0 solid;
   }
 }

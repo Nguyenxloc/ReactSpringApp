@@ -98,7 +98,7 @@ class DetailProductView extends Component {
         });
         const navVer =
             <div className="navVer">
-                <Nav vertical style={{width:270,border:"gray"}}>
+                <Nav vertical style={{width:270}}>
                     <NavItem>
                         <NavLink href="#">
                             <Button style={{width: 250,height:50,textAlign:"start",background:"darkred",color:"white",fontSize:20,borderBottom:"white"}} outline>
@@ -127,7 +127,7 @@ class DetailProductView extends Component {
                     <div className="mt-5" style={{}}>
                         {navVer}
                     </div>
-                    <Row xl="1" xs="1" style={{border:"solid"}}>
+                    <Row xl="1" xs="1" style={{}}>
                         <DetailProductCom/>
                     </Row>
                 </div>
