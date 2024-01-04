@@ -113,12 +113,12 @@ class ListProductCom extends Component {
                     </NavItem>
                 </Nav>
         return (
-            <div className="ListProduct container-xl ">
+            <div className="ListProductHome container-xl ">
                 <div style={{display: "flex"}}>
                     <div className="navVer" style={{border:"solid"}}>
                         {navVer}
                     </div>
-                    <Row className="SubLstProduct" xl="3" xs="1" style={{}}>
+                    <Row className="" xl="3" xs="1" style={{paddingLeft:"20px",border:"solid"}}>
                         {spList}
                     </Row>
                 </div>

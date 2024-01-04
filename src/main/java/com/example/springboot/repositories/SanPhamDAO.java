@@ -1,10 +1,12 @@
 package com.example.springboot.repositories;
 
 import com.example.springboot.model.SanPham;
+import org.aspectj.weaver.ArrayReferenceType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import javax.management.Query;
 import java.util.ArrayList;
 
 public class SanPhamDAO {
@@ -88,5 +90,6 @@ public class SanPhamDAO {
             e.printStackTrace();
         }
     }
+
 
 }

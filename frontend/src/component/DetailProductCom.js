@@ -1,11 +1,16 @@
 import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Css/DetailProduct.scss';
+import '../scss/DetailProduct.scss';
+import '../css/BtnAddToCart.css';
 import {Col, Row} from "reactstrap";
 
 function DetailProductCom({link1, link2, link3}) {
     return (
-        <Col className="bg col-xl-12 col-xs-12" style={{}}>
+        <Col className="bg col-xl-12 col-xs-12 mt-5" style={{}}>
+            <p className="ms-2" style={{}}>
+                Link1>link2>link3
+                <hr/>
+            </p>
             <section>
                 <div className="container">
                     <div className="carousel">
@@ -15,8 +20,8 @@ function DetailProductCom({link1, link2, link3}) {
                         <input type="radio" name="slides" id="slide-4"/>
                         <input type="radio" name="slides" id="slide-5"/>
                         <input type="radio" name="slides" id="slide-6"/>
-                        <Row className="carousel__slides" xl="2" xs="2" style={{border:"solid",width:"800px"}}>
-                            <Col className="bg col-xl-6 col-xs-6"  style={{width:"50%",border:"solid"}}>
+                        <Row className="carousel__slides" xl="2" xs="2" style={{width:"800px"}}>
+                            <Col className="bg col-xl-6 col-xs-6"  style={{width:"50%"}}>
                                 <ul className="carousel__slides">
                                     <li className="carousel__slide">
                                         <figure>
@@ -73,7 +78,11 @@ function DetailProductCom({link1, link2, link3}) {
                                 <br/>
                                 <input style={{width:"40px"}} type="number"/>
                                 <br/><br/>
-                                <button>Thêm vào giỏ</button>
+                                <button className="addtocart">
+                                    <div className="pretext">
+                                        <i className="bi bi-cart4"></i> ADD TO CART
+                                    </div>
+                                </button>
                             </figcaption>
                             </Col>
                         </Row>
@@ -105,6 +114,7 @@ function DetailProductCom({link1, link2, link3}) {
                     </div>
                 </div>
             </section>
+            <hr/>
         </Col>
     );
 }

@@ -1,7 +1,8 @@
+
 import React, { useState } from 'react';
 import {
     Nav,
-    Button, Input,
+    Input,
 } from 'reactstrap';
 
 function NavBarCom(args) {

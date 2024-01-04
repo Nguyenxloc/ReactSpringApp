@@ -111,4 +111,8 @@ public class SanPhamService {
     public void updateNsx(String id, String ma, String ten) {
         nsxdao.update(id,ma,ten);
     }
+
+    public ArrayList<ChiTietSP> getRelateProduct(String idDongSP) {
+        return chiTietSPDAO.getByIdLoaiSP(idDongSP);
+    }
 }

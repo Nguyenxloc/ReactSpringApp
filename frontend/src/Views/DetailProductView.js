@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
 import '../App.css';
-import '../Css/DetailProduct.scss';
+import '../scss/DetailProduct.scss';
 import {
     Button,
     Col,
-    Container, Nav, NavItem, NavLink,
+    Nav, NavItem, NavLink,
     Row,
 } from 'reactstrap';
 import FooterCom from '../component/FooterCom';
 import DetailProductCom from "../component/DetailProductCom";
 import NavBarCom from "../component/NavBarCom";
+import ListProductCom from "../component/ListProductCom";
+import SubListProductCom from "../component/SubListProductCom";
 class DetailProductView extends Component {
     emptyItem = {
         sp: '',
@@ -78,7 +80,7 @@ class DetailProductView extends Component {
     render() {
         const {lstChiTietSP} = this.state;
         const spList = lstChiTietSP.map(chiTietSP => {
-            return <Col className="bg col-xl-4 col-xs-12 mt-5" key={chiTietSP.idChiTietSP} style={{}}>
+            return <Col className="bg col-xl-4 col-xs-12" key={chiTietSP.idChiTietSP} style={{}}>
                 <section className="cards" style={{width:"100%"}}>
                     <article className="card card--1" style={{}}>
                         <div className="card__info-hover">
@@ -127,8 +129,9 @@ class DetailProductView extends Component {
                     <div className="mt-5" style={{}}>
                         {navVer}
                     </div>
-                    <Row xl="1" xs="1" style={{}}>
+                    <Row xl="1" xs="1" style={{marginLeft:"10px"}}>
                         <DetailProductCom/>
+                        <SubListProductCom/>
                     </Row>
                 </div>
                 <br/><br/><br/><br/>

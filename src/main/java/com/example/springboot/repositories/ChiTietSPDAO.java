@@ -4,12 +4,15 @@ import com.example.springboot.model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ChiTietSPDAO {
 //    private SessionFactory factory = HibernateUtil.getFACTORY();
     Transaction tx = null;
+    DongSPDAO  dongSPDAO = new DongSPDAO();
     public void addChiTietSP(String id, SanPham sp, NSX nsx, MauSac mauSac, DongSP dongSP, int namBH, String mota, int soLuongTon, double giaNhap, double giaBan, String link1,String link2,String link3) {
         org.hibernate.cfg.Configuration cfg = new org.hibernate.cfg.Configuration();
         cfg.configure("hibernate.cfg.xml");
@@ -87,5 +90,28 @@ public class ChiTietSPDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<ChiTietSP> getByIdLoaiSP(String idDongSP) {
+        ArrayList<ChiTietSP> lstCTSP = new ArrayList<>();
+        DongSP dongSP = new DongSP();
+        dongSP = dongSPDAO.getById(idDongSP);
+        try {
+            org.hibernate.cfg.Configuration cfg = new org.hibernate.cfg.Configuration();
+            cfg.configure("hibernate.cfg.xml");
+            SessionFactory factory = cfg.buildSessionFactory();
+            Session session = factory.openSession();
+            tx = session.beginTransaction();
+
+            String hql = "FROM ChiTietSP ctsp WHERE ctsp.dongSP = :dongsp ORDER BY idChiTietSP ";
+            Query query = session.createQuery(hql);
+            query.setParameter("dongsp",dongSP);
+            lstCTSP = (ArrayList<ChiTietSP>) query.setMaxResults(6).list();
+            tx.commit();
+            System.out.println("get 6 product related succed");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lstCTSP;
     }
 }

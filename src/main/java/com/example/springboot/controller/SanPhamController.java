@@ -3,6 +3,7 @@ package com.example.springboot.controller;
 import com.example.springboot.model.*;
 import com.example.springboot.service.SanPhamService;
 import com.example.springboot.viewModel.ChiTietSPView;
+import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,6 +52,14 @@ public class SanPhamController {
         ArrayList<ChiTietSP> lstChiTietSPs = new ArrayList<>();
         lstChiTietSPs = sanPhamService.getAllChiTietSP();
         return ResponseEntity.ok(lstChiTietSPs);
+    }
+    @CrossOrigin
+    @GetMapping("/getRelatedChiTietSP/{idDongSP}")
+    public ResponseEntity<ArrayList<ChiTietSP>> getRelateProduct(@PathVariable(value = "idDongSP") String idDongSP) {
+        System.out.println("do controller !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        ArrayList<ChiTietSP> lstChiTietSPS = new ArrayList<>();
+        lstChiTietSPS = sanPhamService.getRelateProduct(idDongSP);
+        return ResponseEntity.ok(lstChiTietSPS);
     }
 
     @GetMapping("/chiTietSP/{id}")
