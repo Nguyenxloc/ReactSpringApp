@@ -73,6 +73,7 @@ class SanPhamList extends Component {
             console.log(err.toString())
         }
     }
+
     async remove(id) {
         let {item} = this.state;
         const {sanPham} = this.state;

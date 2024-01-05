@@ -6,6 +6,7 @@ import {
     Nav, NavItem, NavLink,
     Row,
 } from 'reactstrap';
+import {Link} from "react-router-dom";
 class ListProductCom extends Component {
     emptyItem = {
         sp: '',
@@ -79,9 +80,14 @@ class ListProductCom extends Component {
                         <div className="card__info-hover">
                         </div>
                         <div className="card__img" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
-                        <a href="http://localhost:3000/detail-product" className="card_link">
+                        {/*<a href={`http://localhost:3000/detail-product/${chiTietSP.idChiTietSP}`} className="card_link">*/}
+                        {/*    <div className="card__img--hover" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>*/}
+                        {/*</a>*/}
+                        <Link to={{pathname:`/detail-product/${chiTietSP.idChiTietSP}`,
+                                   state:chiTietSP
+                        }} className="card_link">
                             <div className="card__img--hover" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
-                        </a>
+                        </Link>
                         <div className="card__info">
                             <span className="card__category" style={{fontSize:"0.5vmax"}}>{chiTietSP.dongSP.ten}</span>
                             <h3 className="card__title" style={{fontSize:"1vmax"}}>{chiTietSP.sp.ten}</h3>

@@ -4,7 +4,7 @@ import '../scss/DetailProduct.scss';
 import '../css/BtnAddToCart.css';
 import {Col, Row} from "reactstrap";
 
-function DetailProductCom({link1, link2, link3}) {
+function DetailProductCom({product}) {
     return (
         <Col className="bg col-xl-12 col-xs-12 mt-5" style={{}}>
             <p className="ms-2" style={{}}>
@@ -26,21 +26,21 @@ function DetailProductCom({link1, link2, link3}) {
                                     <li className="carousel__slide">
                                         <figure>
                                             <div>
-                                                <img src="https://picsum.photos/id/1041/800/450" alt=""/>
+                                                <img src={product.link1} alt=""/>
                                             </div>
                                         </figure>
                                     </li>
                                     <li className="carousel__slide">
                                         <figure>
                                             <div>
-                                                <img src="https://picsum.photos/id/1043/800/450" alt=""/>
+                                                <img src={product.link2} alt=""/>
                                             </div>
                                         </figure>
                                     </li>
                                     <li className="carousel__slide">
                                         <figure>
                                             <div>
-                                                <img src="https://picsum.photos/id/1044/800/450" alt=""/>
+                                                <img src={product.link3} alt=""/>
                                             </div>
                                         </figure>
                                     </li>
@@ -70,9 +70,9 @@ function DetailProductCom({link1, link2, link3}) {
                             <Col className="bg col-xl-6 col-xs-6"  style={{}}>
                             <figcaption>
                                 <br/>
-                                <h3>Tên sản phẩm 1</h3>
+                                <h3>{product.sp.ten}</h3>
                                 <br/>
-                                <p style={{color:"darkred",fontSize:"25px"}}>420.000đ</p>
+                                <p style={{color:"darkred",fontSize:"25px"}}>{product.giaBan}$</p>
                                 <hr/>
                                 <label>Số lượng</label>
                                 <br/>
@@ -88,15 +88,15 @@ function DetailProductCom({link1, link2, link3}) {
                         </Row>
                         <ul className="carousel__thumbnails">
                             <li>
-                                <label htmlFor="slide-1"><img src="https://picsum.photos/id/1041/150/150"
+                                <label htmlFor="slide-1"><img src={product.link1}
                                                               alt=""/></label>
                             </li>
                             <li>
-                                <label htmlFor="slide-2"><img src="https://picsum.photos/id/1043/150/150"
+                                <label htmlFor="slide-2"><img src={product.link2}
                                                               alt=""/></label>
                             </li>
                             <li>
-                                <label htmlFor="slide-3"><img src="https://picsum.photos/id/1044/150/150"
+                                <label htmlFor="slide-3"><img src={product.link3}
                                                               alt=""/></label>
                             </li>
                             <li>

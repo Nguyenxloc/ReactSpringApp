@@ -26,9 +26,7 @@ class SubListProductCom extends Component {
     constructor(props) {
         super(props);
         this.state = {item: this.emptyItem, lstChiTietSP: []};
-        // this.remove = this.remove.bind(this);
-        // this.handleChange = this.handleChange.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
+
     }
 
     handleChange(event) {
@@ -57,7 +55,7 @@ class SubListProductCom extends Component {
     }
 
     componentDidMount() {
-
+        const {idDongSP}  =  this.props;
         const requestOptions = {
             method: 'GET',
             headers: {
@@ -66,7 +64,7 @@ class SubListProductCom extends Component {
         };
 
         try {
-            fetch('http://localhost:8080/sanPham/getRelatedChiTietSP/EA5E24F4-DAD2-4301-8F1E-DA071661B35C', requestOptions)
+            fetch(`http://localhost:8080/sanPham/getRelatedChiTietSP/${idDongSP}`, requestOptions)
                 .then(response => response.json())
                 .then(data => this.setState({lstChiTietSP: data}));
         } catch (err) {
@@ -77,12 +75,12 @@ class SubListProductCom extends Component {
     render() {
         const {lstChiTietSP} = this.state;
         const spList = lstChiTietSP.map(chiTietSP => {
-            return <Col className="bg col-xl-4 col-xs-12" key={chiTietSP.idChiTietSP} style={{}}>
+            return <Col className="bg col-xl-4 col-xs-12 mb-4" key={chiTietSP.idChiTietSP} style={{}}>
                 <article className="card card--1" style={{}}>
                     <div className="card__info-hover">
                     </div>
                     <div className="card__img" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
-                    <a href="http://localhost:3000/detail-product" className="card_link">
+                    <a href={`http://localhost:3000/detail-product/${chiTietSP.idChiTietSP}`} className="card_link">
                         <div className="card__img--hover"
                              style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
                     </a>

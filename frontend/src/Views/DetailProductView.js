@@ -3,14 +3,12 @@ import '../App.css';
 import '../scss/DetailProduct.scss';
 import {
     Button,
-    Col,
     Nav, NavItem, NavLink,
     Row,
 } from 'reactstrap';
 import FooterCom from '../component/FooterCom';
 import DetailProductCom from "../component/DetailProductCom";
 import NavBarCom from "../component/NavBarCom";
-import ListProductCom from "../component/ListProductCom";
 import SubListProductCom from "../component/SubListProductCom";
 class DetailProductView extends Component {
     emptyItem = {
@@ -31,9 +29,9 @@ class DetailProductView extends Component {
     constructor(props) {
         super(props);
         this.state = {item: this.emptyItem, lstChiTietSP: []};
-        // this.remove = this.remove.bind(this);
-        // this.handleChange = this.handleChange.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
+        this.state={
+            item:this.props.location.state,
+        }
     }
 
     handleChange(event) {
@@ -50,7 +48,6 @@ class DetailProductView extends Component {
     async handleSubmit(event) {
         event.preventDefault();
         const {item} = this.state;
-
         await fetch('/sanPham/chiTietSP/add', {
             method: 'POST',
             headers: {
@@ -79,25 +76,7 @@ class DetailProductView extends Component {
     }
     render() {
         const {lstChiTietSP} = this.state;
-        const spList = lstChiTietSP.map(chiTietSP => {
-            return <Col className="bg col-xl-4 col-xs-12" key={chiTietSP.idChiTietSP} style={{}}>
-                <section className="cards" style={{width:"100%"}}>
-                    <article className="card card--1" style={{}}>
-                        <div className="card__info-hover">
-                        </div>
-                        <div className="card__img" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
-                        <a href="#" className="card_link">
-                            <div className="card__img--hover" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
-                        </a>
-                        <div className="card__info">
-                            <span className="card__category" style={{fontSize:"0.5vmax"}}>{chiTietSP.dongSP.ten}</span>
-                            <h3 className="card__title" style={{fontSize:"1vmax"}}>{chiTietSP.sp.ten}</h3>
-                            <span className="card__by">Price: <a href="#" className="card__author" title="author" style={{fontSize :20,color:"darkorange"}}>{chiTietSP.giaBan}$</a></span>
-                        </div>
-                    </article>
-                </section>
-            </Col>
-        });
+        const {item} = this.state;
         const navVer =
             <div className="navVer">
                 <Nav vertical style={{width:270}}>
@@ -130,8 +109,12 @@ class DetailProductView extends Component {
                         {navVer}
                     </div>
                     <Row xl="1" xs="1" style={{marginLeft:"10px"}}>
-                        <DetailProductCom/>
-                        <SubListProductCom/>
+                        <DetailProductCom
+                        product={item}
+                        />
+                        <SubListProductCom
+                        idDongSP={item.dongSP.idDongSP}
+                        />
                     </Row>
                 </div>
                 <br/><br/><br/><br/>
