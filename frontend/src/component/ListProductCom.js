@@ -80,9 +80,6 @@ class ListProductCom extends Component {
                         <div className="card__info-hover">
                         </div>
                         <div className="card__img" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
-                        {/*<a href={`http://localhost:3000/detail-product/${chiTietSP.idChiTietSP}`} className="card_link">*/}
-                        {/*    <div className="card__img--hover" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>*/}
-                        {/*</a>*/}
                         <Link to={{pathname:`/detail-product/${chiTietSP.idChiTietSP}`,
                                    state:chiTietSP
                         }} className="card_link">

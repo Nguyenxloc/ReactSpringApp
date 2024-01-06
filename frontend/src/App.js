@@ -14,6 +14,7 @@ import chiTietSPList from "./SanPhamMng/ChiTietSP/ChiTietSPList";
 import chiTietSPEdit from "./SanPhamMng/ChiTietSP/ChiTietSPEdit";
 import Test from "./testing/test";
 import DetailProductView from "./Views/DetailProductView";
+import DetailProductRelatedView from "./Views/DetailProductRelatedView";
 class App extends Component {
     render() {
         return (
@@ -32,6 +33,7 @@ class App extends Component {
                     <Route path='/chiTietSp/:id' exact={true} component={chiTietSPEdit}/>
                     <Route path='/test' exact={true} component={Test}/>
                     <Route path='/detail-product/:id' exact={true} component={DetailProductView}/>
+                    <Route path='/detail-product-related/:id' exact={true} component={DetailProductRelatedView}/>
                 </Switch>
             </Router>
         )

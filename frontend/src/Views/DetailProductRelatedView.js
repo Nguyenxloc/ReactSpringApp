@@ -11,7 +11,7 @@ import DetailProductCom from "../component/DetailProductCom";
 import NavBarCom from "../component/NavBarCom";
 import SubListProductCom from "../component/SubListProductCom";
 
-class DetailProductView extends Component {
+class DetailProductRelatedView extends Component {
     emptyItem = {
         sp: '',
         nsx: '',
@@ -33,7 +33,7 @@ class DetailProductView extends Component {
         this.state={
             item:this.props.location.state,
         }
-        this.changeItem = this.changeItem.bind(this);
+        console.log(this.state.item);
     }
 
     handleChange(event) {
@@ -76,10 +76,6 @@ class DetailProductView extends Component {
         //     console.log(err.toString())
         // }
     }
-    changeItem(newItem){
-        this.setState({item: newItem});
-    }
-
     render() {
         const {item} = this.state;
         const navVer =
@@ -119,7 +115,6 @@ class DetailProductView extends Component {
                         />
                         <SubListProductCom
                         idDongSP={item.dongSP.idDongSP}
-                        changeItem ={this.changeItem}
                         />
                     </Row>
                 </div>
@@ -130,4 +125,4 @@ class DetailProductView extends Component {
     }
 }
 
-export default DetailProductView;
+export default DetailProductRelatedView;

@@ -26,7 +26,6 @@ class SubListProductCom extends Component {
     constructor(props) {
         super(props);
         this.state = {item: this.emptyItem, lstChiTietSP: []};
-
     }
 
     handleChange(event) {
@@ -72,6 +71,7 @@ class SubListProductCom extends Component {
         }
     }
 
+
     render() {
         const {lstChiTietSP} = this.state;
         const spList = lstChiTietSP.map(chiTietSP => {
@@ -80,10 +80,9 @@ class SubListProductCom extends Component {
                     <div className="card__info-hover">
                     </div>
                     <div className="card__img" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
-                    <a href={`http://localhost:3000/detail-product/${chiTietSP.idChiTietSP}`} className="card_link">
-                        <div className="card__img--hover"
-                             style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
-                    </a>
+                    <button onClick={()=>this.props.changeItem(chiTietSP)}  className="card_link" >
+                        <div className="card__img--hover" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
+                    </button>
                     <div className="card__info">
                         <span className="card__category" style={{fontSize: "0.5vmax"}}>{chiTietSP.dongSP.ten}</span>
                         <h3 className="card__title" style={{fontSize: "1vmax"}}>{chiTietSP.sp.ten}</h3>
