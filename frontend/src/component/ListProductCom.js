@@ -19,8 +19,6 @@ class ListProductCom extends Component {
         giaNhap: '',
         giaBan: '',
         link1: '',
-        link2: '',
-        link3: '',
     };
 
     constructor(props) {
@@ -56,7 +54,7 @@ class ListProductCom extends Component {
         this.setState(this.getAll());
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const requestOptions = {
             method: 'GET',
             headers: {
@@ -80,8 +78,7 @@ class ListProductCom extends Component {
                         <div className="card__info-hover">
                         </div>
                         <div className="card__img" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
-                        <Link to={{pathname:`/detail-product/${chiTietSP.idChiTietSP}`,
-                                   state:chiTietSP
+                        <Link to={{pathname:`/detail-product/${chiTietSP.idChiTietSP}`
                         }} className="card_link">
                             <div className="card__img--hover" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
                         </Link>

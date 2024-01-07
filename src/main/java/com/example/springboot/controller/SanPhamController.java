@@ -64,6 +64,7 @@ public class SanPhamController {
 
     @GetMapping("/chiTietSP/{id}")
     public ChiTietSP getChiTietSPByID(@PathVariable(value = "id") String id) {
+        System.out.println("test fetch");
         return sanPhamService.getByIDChiTietSP(id);
     }
 

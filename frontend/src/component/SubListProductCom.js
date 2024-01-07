@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import '../App.css';
 import {
-    Button,
     Col,
-    Nav, NavItem, NavLink,
     Row,
 } from 'reactstrap';
+import {Link} from "react-router-dom";
 
 class SubListProductCom extends Component {
     emptyItem = {
@@ -19,13 +18,11 @@ class SubListProductCom extends Component {
         giaNhap: '',
         giaBan: '',
         link1: '',
-        link2: '',
-        link3: '',
     };
-
     constructor(props) {
         super(props);
         this.state = {item: this.emptyItem, lstChiTietSP: []};
+
     }
 
     handleChange(event) {
@@ -53,15 +50,15 @@ class SubListProductCom extends Component {
         this.setState(this.getAll());
     }
 
-    componentDidMount() {
+     componentDidMount() {
         const {idDongSP}  =  this.props;
+        console.log(idDongSP);
         const requestOptions = {
             method: 'GET',
             headers: {
                 accept: 'application/json'
             },
         };
-
         try {
             fetch(`http://localhost:8080/sanPham/getRelatedChiTietSP/${idDongSP}`, requestOptions)
                 .then(response => response.json())
@@ -80,9 +77,10 @@ class SubListProductCom extends Component {
                     <div className="card__info-hover">
                     </div>
                     <div className="card__img" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
-                    <button onClick={()=>this.props.changeItem(chiTietSP)}  className="card_link" >
+                    <Link to={{pathname:`/detail-product/${chiTietSP.idChiTietSP}`
+                    }} className="card_link">
                         <div className="card__img--hover" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
-                    </button>
+                    </Link>
                     <div className="card__info">
                         <span className="card__category" style={{fontSize: "0.5vmax"}}>{chiTietSP.dongSP.ten}</span>
                         <h3 className="card__title" style={{fontSize: "1vmax"}}>{chiTietSP.sp.ten}</h3>
@@ -94,42 +92,7 @@ class SubListProductCom extends Component {
                 </article>
             </Col>
         });
-        const navVer =
-            <Nav vertical style={{width: 270, border: "gray"}}>
-                <NavItem>
-                    <NavLink href="#">
-                        <Button style={{
-                            width: 250,
-                            height: 50,
-                            textAlign: "start",
-                            background: "darkred",
-                            color: "white",
-                            fontSize: 20,
-                            borderBottom: "white"
-                        }} outline>
-                            Danh mục sản phẩm
-                        </Button>
-                        <Button
-                            style={{width: 250, height: 60, textAlign: "start", fontSize: 20, borderBottom: "white"}}
-                            outline>
-                            Thắt lưng da
-                        </Button>
-                        <Button
-                            style={{width: 250, height: 60, textAlign: "start", fontSize: 20, borderBottom: "white"}}
-                            outline>
-                            Ví da
-                        </Button>
-                        <Button
-                            style={{width: 250, height: 60, textAlign: "start", fontSize: 20, borderBottom: "white"}}
-                            outline>
-                            Túi da
-                        </Button>
-                        <Button style={{width: 250, height: 60, textAlign: "start", fontSize: 20}} outline>
-                            Phụ kiện
-                        </Button>
-                    </NavLink>
-                </NavItem>
-            </Nav>
+
         return (
             <div className="ListProduct container-xl ">
                 <p style={{marginLeft:"5px"}}>

@@ -6,11 +6,10 @@ import {
     Nav, NavItem, NavLink,
     Row,
 } from 'reactstrap';
+import SubListProductCom from "../component/SubListProductCom";
 import FooterCom from '../component/FooterCom';
 import DetailProductCom from "../component/DetailProductCom";
 import NavBarCom from "../component/NavBarCom";
-import SubListProductCom from "../component/SubListProductCom";
-
 class DetailProductView extends Component {
     emptyItem = {
         sp: '',
@@ -26,14 +25,9 @@ class DetailProductView extends Component {
         link2: '',
         link3: '',
     };
-
     constructor(props) {
         super(props);
-        this.state = {item: this.emptyItem, lstChiTietSP: []};
-        this.state={
-            item:this.props.location.state,
-        }
-        this.changeItem = this.changeItem.bind(this);
+        this.state = {item: this.emptyItem,idDongSP:null};
     }
 
     handleChange(event) {
@@ -61,27 +55,27 @@ class DetailProductView extends Component {
         this.setState(this.getAll());
     }
 
-    componentDidMount() {
-        // const requestOptions = {
-        //     method: 'GET',
-        //     headers: {
-        //         accept: 'application/json'
-        //     }
-        // };
-        // try {
-        //     fetch('http://localhost:8080/sanPham/chiTietSP/getAll', requestOptions)
-        //         .then(response => response.json())
-        //         .then(data => this.setState({lstChiTietSP: data}));
-        // } catch (err) {
-        //     console.log(err.toString())
-        // }
-    }
-    changeItem(newItem){
-        this.setState({item: newItem});
+    async componentDidMount() {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json'
+            }
+        };
+        try {
+            const chiTietSP = await (await fetch(`/sanPham/chiTietSP/${this.props.match.params.id}`)).json();
+            this.setState({item: chiTietSP});
+            this.setState({idDongSP:chiTietSP.dongSP.idDongSP})
+        } catch (err) {
+            console.log(err.toString())
+        }
     }
 
     render() {
+        const {idDongSP} = this.state;
         const {item} = this.state;
+        let  x = {idDongSP}
+        console.log(idDongSP)
         const navVer =
             <div className="navVer">
                 <Nav vertical style={{width:270}}>
@@ -106,7 +100,7 @@ class DetailProductView extends Component {
                     </NavItem>
                 </Nav>
             </div>
-        return (
+        return (item?
             <div>
                 <NavBarCom/>
                 <div className="DetailProductViewCSS container-xl" style={{display: "flex"}}>
@@ -117,15 +111,18 @@ class DetailProductView extends Component {
                         <DetailProductCom
                         product={item}
                         />
-                        <SubListProductCom
-                        idDongSP={item.dongSP.idDongSP}
-                        changeItem ={this.changeItem}
-                        />
+                        {idDongSP?
+                            <SubListProductCom
+                                idDongSP={item.dongSP.idDongSP}
+                            />
+                            :<em>Loading...</em>
+                        }
                     </Row>
                 </div>
                 <br/><br/><br/><br/>
                 <FooterCom/>
             </div>
+            :<em>Loading...</em>
         );
     }
 }
