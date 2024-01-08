@@ -78,7 +78,7 @@ class SubListProductCom extends Component {
                     </div>
                     <div className="card__img" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
                     <Link to={{pathname:`/detail-product/${chiTietSP.idChiTietSP}`
-                    }} className="card_link">
+                    }} onClick={()=>{window.location.reload()}} className="card_link">
                         <div className="card__img--hover" style={{backgroundImage: 'url(' + chiTietSP.link1 + ')'}}></div>
                     </Link>
                     <div className="card__info">
